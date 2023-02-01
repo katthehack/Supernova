@@ -189,3 +189,21 @@ Received Import Request.
   path: Assets/temp/sol_hand_drawn_neutral.PNG
   artifactKey: Guid(507ab5cef67e5a44aa7213a8d06be964) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/temp/sol_hand_drawn_neutral.PNG using Guid(507ab5cef67e5a44aa7213a8d06be964) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb23eeb66da13788c4dbddca98d17d47') in 0.275249 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 557.085255 seconds.
+  path: Assets/Sol
+  artifactKey: Guid(8d99b6f26fa5d2a4ab4accdc99ca0a4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sol using Guid(8d99b6f26fa5d2a4ab4accdc99ca0a4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36fc5e50d8fe6cb305ebe25b6b40d24e') in 0.008016 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 29.693043 seconds.
+  path: Assets/Sol/sol_hand_drawn_neutral 1.PNG
+  artifactKey: Guid(f87efe4836431c74d9eeb88d1f6b95af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sol/sol_hand_drawn_neutral 1.PNG using Guid(f87efe4836431c74d9eeb88d1f6b95af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b57c7b26befe1b8cb5e078af616335e9') in 0.257757 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.530786 seconds.
+  path: Assets/Sol/sol_hand_drawn_neutral 1.PNG
+  artifactKey: Guid(f87efe4836431c74d9eeb88d1f6b95af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sol/sol_hand_drawn_neutral 1.PNG using Guid(f87efe4836431c74d9eeb88d1f6b95af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3ccd302985822e79c28e3ab042c9031') in 0.236468 seconds 
