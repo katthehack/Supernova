@@ -9,33 +9,33 @@ public class ChangeSprite : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
+    int walkCycle;
     int frame;
     // Start is called before the first frame update
     void Start()
     {
         frame = 1;
-        Boolean doesLoop = true;
-        while (doesLoop)
-        {
-            cycle();
-        }
+        walkCycle = 1;
     }
     // Update is called once per frame
-
-    void cycle()
+    private void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (frame%10==1)
         {
-            spriteRenderer.sprite = sprites[0];
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            spriteRenderer.sprite = sprites[frame];
-            frame++;
-            if (frame > 7) frame = 1;
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                spriteRenderer.sprite = sprites[0];
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                spriteRenderer.sprite = sprites[walkCycle];
+                walkCycle++;
+                if (walkCycle > 7) walkCycle = 1;
 
+            }
         }
-        // yield return new WaitForSeconds(0.111f);
+        frame++;
     }
+
 
 }
