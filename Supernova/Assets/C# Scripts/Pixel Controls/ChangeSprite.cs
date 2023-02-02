@@ -16,7 +16,7 @@ public class ChangeSprite : MonoBehaviour
     void Start()
     {
         frame = 1;
-        walkCycleUp = 7;
+        walkCycleUp = 8;
         walkCycleDown = 0;
     }
     // Update is called once per frame
@@ -28,14 +28,21 @@ public class ChangeSprite : MonoBehaviour
             {
                 spriteRenderer.sprite = sprites[walkCycleUp];
                 walkCycleUp++;
-                if (walkCycleUp > 13) walkCycleUp = 7;
+                if (walkCycleUp > 15) walkCycleUp = 8;
             }
-            if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
                 spriteRenderer.sprite = sprites[walkCycleDown];
                 walkCycleDown++;
-                if (walkCycleDown > 6) walkCycleDown = 0;
+                if (walkCycleDown > 7) walkCycleDown = 0;
 
+            }
+            else
+            {
+                spriteRenderer.sprite = sprites[16];
+                walkCycleDown = 0;
+                walkCycleUp = 8;
+                //frame = 1;
             }
         }
         frame++;
