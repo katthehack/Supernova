@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.tag = "Sol";
     }
 
     // Update is called once per frame
