@@ -14,7 +14,8 @@ public class ChangeSprite : MonoBehaviour
     int walkCycleRight;
     int walkCycleLeft;
     int frame;
-    KeyCode lastKey;
+    KeyCode lastKey; //used to determine still frame
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +30,11 @@ public class ChangeSprite : MonoBehaviour
     {
         if (frame%35==0)
         {
-           
             if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.UpArrow))
             {
                 spriteRenderer.sprite = sprites[walkCycleUp];
                 walkCycleUp++;
-               lastKey = KeyCode.W;
+                lastKey = KeyCode.W;
                 if (walkCycleUp > 15) walkCycleUp = 8;
             }
             else if (Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.DownArrow))
@@ -42,7 +42,7 @@ public class ChangeSprite : MonoBehaviour
                 spriteRenderer.sprite = sprites[walkCycleDown];
                 walkCycleDown++;
                 if (walkCycleDown > 7) walkCycleDown = 0;
-              lastKey= KeyCode.S;
+                lastKey= KeyCode.S;
 
             }
             else if (Input.GetKey(KeyCode.D)||Input.GetKey(KeyCode.RightArrow))
@@ -63,11 +63,12 @@ public class ChangeSprite : MonoBehaviour
             }
             else
             {
+
                 walkCycleDown = 0;
                 walkCycleUp = 8;
                 walkCycleRight = 20;
                 walkCycleLeft = 32;
-               if(lastKey==KeyCode.S)
+                if(lastKey==KeyCode.S)
                 {
                     spriteRenderer.sprite = sprites[16];
                 }
