@@ -5,13 +5,13 @@ using System;
 
 public class PlayerControl : MonoBehaviour
 {
-    float speed = 7.5f;
+    float speed = 10.0f;
     Vector3 move;
     
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.tag = "Sol";
+        gameObject.tag = "Player";
     }
 
     // Update is called once per frame
@@ -27,10 +27,7 @@ public class PlayerControl : MonoBehaviour
         }
         //move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
         
-        //vector3 holds values for x y and z
-        //this gets current coordinates
-        //if you remove time you go supersonic speed
 
-        transform.position += move * speed * Time.deltaTime;
+        transform.position += move * speed * 0.002f;
     }
 }
