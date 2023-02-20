@@ -5,27 +5,39 @@ using UnityEngine;
 
 public class OnClickPopUp : MonoBehaviour
 {
-    public GameObject popUpBox;
+    // public GameObject popUpBox;
+    public Rigidbody2D rb;
    public Animator animator;
-    public TMP_Text popUpText;
+     public TMP_Text popUpText;
+    bool openOrClose;
+    public string Dialog;
     public void Start()
     {
-        
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag=="Player")
-        {
-            Debug.Log("gottem");
-            animator.SetTrigger("Trigger");
-        }
+        animator=GetComponent<Animator>();
+        openOrClose= false; //false means closed
+        popUpText.text = Dialog;
     }
     
-    public void PopUpText(string text)
+   public void Update()
     {
-        popUpBox.SetActive(true);
-        popUpText.text = text;
-        //animator.SetTrigger("open");
+        if (animator != null)
+        {
+            if(!openOrClose&&Input.GetKeyDown(KeyCode.Space)) 
+            {
+                animator.SetTrigger("DialogueOpen");
+                openOrClose= true;
+            }
+            if (openOrClose&&Input.GetKeyDown(KeyCode.Space))
+            {
+                animator.SetTrigger("DialogueClose");
+                openOrClose= false;
+            }
+
+        }
+
+      
+
+      //  add in if (collision.gameObject.tag == "Player") {}
     }
     
 }
