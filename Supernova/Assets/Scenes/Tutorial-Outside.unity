@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 1257211427}
   m_Layer: 0
   m_Name: mailbox
-  m_TagString: Untagged
+  m_TagString: Decor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -771,10 +771,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8800ee53eaa544f92e2dba8ece98eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 476881000}
   animator: {fileID: 395910162}
   popUpText: {fileID: 1582982708}
   Dialog: The mailbox is full to the brim with letters from various universities
     and research facilities per usual. They are all addressed to my mother.
+  decor: {fileID: 1257211425}
+  player: {fileID: 476881004}
 --- !u!1 &1582982707
 GameObject:
   m_ObjectHideFlags: 0

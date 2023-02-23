@@ -13,7 +13,7 @@ public class OnClickPopUp : MonoBehaviour
     bool openOrClose;
     public string Dialog;
     public BoxCollider2D decor;
-    public BoxCollider2D player; //finish this
+    public BoxCollider2D player; 
     public void Start()
     {
         animator=GetComponent<Animator>();
@@ -22,22 +22,19 @@ public class OnClickPopUp : MonoBehaviour
     }
     public void Update()
     {
-        
-    }
-    public void TextBoxStatus(Collision collision)
-    {
-        //object = GameObject.FindWithTag("Player").GetComponent<Collider2D>();
+        decor = GameObject.FindWithTag("Decor").GetComponent<BoxCollider2D>(); //decor-any object that will be interactible
+        player = GameObject.FindWithTag("Player").GetComponent<BoxCollider2D>();
         Debug.Log("button clicked");
-        if (collision.gameObject.tag == "Player"&&animator != null)
+        if (decor.IsTouching(player)&&animator != null)
         {
             Debug.Log("collided");
-            if(!openOrClose&&Input.GetKeyDown(KeyCode.Space)) 
+            if(!openOrClose&&Input.GetKeyDown(KeyCode.E)) 
             {
                 animator.SetTrigger("DialogueOpen");
                 openOrClose= true;
                 Debug.Log("open");
             }
-            if (openOrClose&&Input.GetKeyDown(KeyCode.Space))
+            if (openOrClose&&Input.GetKeyDown(KeyCode.E))
             {
                 animator.SetTrigger("DialogueClose");
                 openOrClose= false;
@@ -48,7 +45,8 @@ public class OnClickPopUp : MonoBehaviour
 
       
 
-      //  add in if (collision.gameObject.tag == "Player") {}
+      //  back up plan uses this: if (collision.gameObject.tag == "Player") {}
+      //requires passing in collision, which you cant do in an update function; would need button, so trying to avoid that here
     }
     
 }
