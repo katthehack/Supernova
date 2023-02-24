@@ -176,7 +176,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -778,6 +778,7 @@ MonoBehaviour:
     and research facilities per usual. They are all addressed to my mother.
   decor: {fileID: 1257211425}
   player: {fileID: 476881004}
+  animObject: {fileID: 395910157}
 --- !u!1 &1582982707
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,8 +846,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
