@@ -5,7 +5,7 @@ using System;
 
 public class PlayerControl : MonoBehaviour
 {
-    float speed = 10.0f;
+    float speed = 20.0f;
     Vector3 move;
     
     // Start is called before the first frame update
