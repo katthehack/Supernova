@@ -7,11 +7,12 @@ using UnityEngine;
 public class OnClickPopUp : MonoBehaviour
 {
     // public GameObject popUpBox;
-    public Rigidbody2D rb;
+  //  public Rigidbody2D rb;
    public Animator animator;
      public TMP_Text popUpText;
     bool openOrClose;
-    public string Dialog;
+    public string [] Dialog;
+    public int repeats;
     public BoxCollider2D decor;
     public BoxCollider2D player;
     KeyCode input = KeyCode.E;
@@ -20,39 +21,46 @@ public class OnClickPopUp : MonoBehaviour
     {
         animator=animObject.GetComponent<Animator>();
         openOrClose= animator.GetBool("OpenOrClose"); //false means closed
-        popUpText.text = Dialog;
+        repeats = 0;
     }
     public void Update()
     {
-        
-        decor = GameObject.FindWithTag("Decor").GetComponent<BoxCollider2D>(); //decor-any object that will be interactible
-        player = GameObject.FindWithTag("Player").GetComponent<BoxCollider2D>();
-        if (decor.IsTouching(player)&&animator != null)
+        if (repeats < Dialog.Length)
         {
-            Debug.Log("collided");
-            if(!openOrClose&&Input.GetKeyDown(input)) 
+            popUpText.text = Dialog[repeats];
+            decor = GameObject.FindWithTag("Decor").GetComponent<BoxCollider2D>(); //decor-any object that will be interactible
+            player = GameObject.FindWithTag("Player").GetComponent<BoxCollider2D>();
+            if (decor.IsTouching(player) && animator != null)
             {
-               // animator.Play("text box open");
-                animator.SetTrigger("DialogueOpen");
-                openOrClose= true;
-                animator.SetBool("OpenOrClose",true); //bool not updating, open anim not playing while close plays
-                
-                Debug.Log("open");
-            }
-            else if (openOrClose&&Input.GetKeyDown(input))
-            {
-                animator.SetTrigger("DialogueClose");
-                openOrClose= false;
-                animator.SetBool("OpenOrClose", false);
-               // animator.Play("text box close");
-              //  animator.Play("text box idle");
-                Debug.Log("close");
-                //alt method is commented out
-            }
-        
+                Debug.Log("collided");
+                if (!openOrClose && Input.GetKeyDown(input))
+                {
+                    // animator.Play("text box open wait");
+                    animator.SetTrigger("DialogueOpen");
+                    animator.ResetTrigger("DialogueClose");
+                    openOrClose = true;
+                    animator.SetBool("OpenOrClose", true); //bool not updating, open anim not playing while close plays
 
+                    Debug.Log("open");
+                   
+                }
+                else if (openOrClose && Input.GetKeyDown(input))
+                {
+                    animator.SetTrigger("DialogueClose");
+                  //  animator.ResetTrigger("DialogueOpen");
+                    openOrClose = false;
+                    animator.SetBool("OpenOrClose", false);
+                    // animator.Play("text box close");
+                    //  animator.Play("text box idle");
+                    Debug.Log("close");
+                    //alt method is commented out
+                    repeats++;
+                }
+
+
+            }
+            
         }
-
       
 
       //  back up plan uses this: if (collision.gameObject.tag == "Player") {}

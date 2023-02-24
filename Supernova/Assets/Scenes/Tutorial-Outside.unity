@@ -295,15 +295,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395910157}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1582982710}
   - {fileID: 643788484}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 476881002}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -450,6 +450,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 372361450}
+  - {fileID: 395910161}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -771,11 +772,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8800ee53eaa544f92e2dba8ece98eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 476881000}
   animator: {fileID: 395910162}
   popUpText: {fileID: 1582982708}
-  Dialog: The mailbox is full to the brim with letters from various universities
-    and research facilities per usual. They are all addressed to my mother.
+  Dialog:
+  - The mailbox is full to the brim with letters from various universities and research
+    facilities per usual. They are all addressed to my mother.
+  - This should play the second time.
+  - This should play the third time.
+  repeats: 0
   decor: {fileID: 1257211425}
   player: {fileID: 476881004}
   animObject: {fileID: 395910157}
@@ -821,8 +825,8 @@ MonoBehaviour:
     here Text here Text here Text here Text here Text here Text here Text here Text
     here Text here Text here Text here Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f3fdb70f5376ab74db002e4a9f60e577, type: 2}
+  m_sharedMaterial: {fileID: 5694285567440500972, guid: f3fdb70f5376ab74db002e4a9f60e577, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
