@@ -953,7 +953,7 @@ GameObject:
   - component: {fileID: 1631393976}
   - component: {fileID: 1631393975}
   m_Layer: 0
-  m_Name: Walking
+  m_Name: Walking Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -970,7 +970,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a3b2938449675c644a85a772425e22ab, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
