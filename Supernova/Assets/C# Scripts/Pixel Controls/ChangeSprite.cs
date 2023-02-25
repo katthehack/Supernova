@@ -28,9 +28,13 @@ public class ChangeSprite : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+<<<<<<< HEAD
         /*
         
         if (frame%35==0)
+=======
+        if (frame%25==0)
+>>>>>>> 6f206aaa94363171dffc3d28ff19688be41254ca
         {
             if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.UpArrow))
             {
