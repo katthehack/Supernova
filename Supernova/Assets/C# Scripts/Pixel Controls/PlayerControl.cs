@@ -17,6 +17,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(Math.Abs(Input.GetAxis("Horizontal")) > Math.Abs(Input.GetAxis("Vertical")))
         {
             move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
@@ -27,7 +28,6 @@ public class PlayerControl : MonoBehaviour
         }
         //move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
         
-
-        transform.position += move * speed * 0.002f;
+        transform.position += move * speed * 0.002f; */
     }
 }
