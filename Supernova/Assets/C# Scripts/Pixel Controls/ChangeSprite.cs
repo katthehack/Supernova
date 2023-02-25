@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class ChangeSprite : MonoBehaviour
 {
+    /*
     public SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
     int walkCycleUp;
@@ -15,6 +16,7 @@ public class ChangeSprite : MonoBehaviour
     int walkCycleLeft;
     int frame;
     KeyCode lastKey; //used to determine still frame
+    
 
     // Start is called before the first frame update
     void Start()
@@ -89,8 +91,10 @@ public class ChangeSprite : MonoBehaviour
                 
             }
         }
-        frame++; */
+        frame++; 
+
     }
+    */
 
 
 }

@@ -39,9 +39,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: OpenOrClose
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DialogueClose
     m_EventTreshold: 0
@@ -70,9 +67,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: OpenOrClose
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: EndOfDialogue
     m_EventTreshold: 0
@@ -98,9 +92,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: OpenOrClose
-    m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: EndOfDialogue
     m_EventTreshold: 0
@@ -172,9 +163,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: OpenOrClose
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: DialogueOpen
     m_EventTreshold: 0

@@ -10,61 +10,78 @@ public class OnClickPopUp : MonoBehaviour
   //  public Rigidbody2D rb;
    public Animator animator;
      public TMP_Text popUpText;
-    bool openOrClose;
+ //   bool openOrClose;
     public string [] Dialog;
     public int repeats;
     public BoxCollider2D decor;
     public BoxCollider2D player;
     KeyCode input = KeyCode.E;
     public GameObject animObject;
+    bool lastDialogue = false;
     public void Start()
     {
         animator=animObject.GetComponent<Animator>();
-        openOrClose= animator.GetBool("OpenOrClose"); //false means closed
+  //      openOrClose= animator.GetBool("OpenOrClose"); //false means closed
         repeats = 0;
     }
     public void Update()
     {
-        if (repeats < Dialog.Length)
-        {
-            popUpText.text = Dialog[repeats];
+        animator.SetBool("EndOfDialogue", false);
             decor = GameObject.FindWithTag("Decor").GetComponent<BoxCollider2D>(); //decor-any object that will be interactible
             player = GameObject.FindWithTag("Player").GetComponent<BoxCollider2D>();
             if (decor.IsTouching(player) && animator != null)
             {
                 Debug.Log("collided");
-                if (!openOrClose && Input.GetKeyDown(input))
+                if (repeats==0&&Input.GetKeyDown(input))
                 {
-                    // animator.Play("text box open wait");
-                    animator.SetTrigger("DialogueOpen");
+                popUpText.text = Dialog[repeats];
+                animator.Play("text box open");
+                animator.SetTrigger("DialogueOpen");
                     animator.ResetTrigger("DialogueClose");
-                    openOrClose = true;
+               //     openOrClose = true;
                     animator.SetBool("OpenOrClose", true); //bool not updating, open anim not playing while close plays
-
-                    Debug.Log("open");
-                   
+                animator.SetBool("EndOfDialogue", false);
+                Debug.Log("open");
+                    repeats++;
                 }
-                else if (openOrClose && Input.GetKeyDown(input))
+                else if (repeats>0&&Input.GetKeyDown(input))
                 {
-                    animator.SetTrigger("DialogueClose");
-                  //  animator.ResetTrigger("DialogueOpen");
-                    openOrClose = false;
+                popUpText.text = Dialog[repeats];
+                animator.SetTrigger("DialogueClose");
+                    //  animator.ResetTrigger("DialogueOpen");
+                 //   openOrClose = false;
                     animator.SetBool("OpenOrClose", false);
                     // animator.Play("text box close");
                     //  animator.Play("text box idle");
                     Debug.Log("close");
-                    //alt method is commented out
-                    repeats++;
+                //alt method is commented out
+                if (repeats != Dialog.Length - 1) repeats++;
+                else lastDialogue = true;
+                
                 }
+            else if (Input.GetKeyDown(input)&&lastDialogue)
+            {
+                animator.SetTrigger("DialogueClose");
+                 animator.ResetTrigger("DialogueOpen");
+              //  openOrClose = false;
+                animator.SetBool("OpenOrClose", false);
+                animator.SetBool("EndOfDialogue", true);
+                 animator.Play("text box close");
+                 animator.Play("text box idle");
+                Debug.Log("close");
+                //alt method is commented out
+                repeats=0;
+                lastDialogue = false;
+            }
 
 
             }
-            
-        }
-      
 
-      //  back up plan uses this: if (collision.gameObject.tag == "Player") {}
-      //requires passing in collision, which you cant do in an update function; would need button, so trying to avoid that here
-    }
-    
+            
+          
+
+            //  back up plan uses this: if (collision.gameObject.tag == "Player") {}
+            //requires passing in collision, which you cant do in an update function; would need button, so trying to avoid that here
+        }
+
 }

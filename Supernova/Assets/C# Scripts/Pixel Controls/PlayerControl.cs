@@ -5,13 +5,13 @@ using System;
 
 public class PlayerControl : MonoBehaviour
 {
-    float speed = 20.0f;
-    Vector3 move;
+   // float speed = 20.0f;
+  //  Vector3 move;
     
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.tag = "Player";
+  //      gameObject.tag = "Player";
     }
 
     // Update is called once per frame
