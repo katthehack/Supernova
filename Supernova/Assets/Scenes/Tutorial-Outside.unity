@@ -341,7 +341,6 @@ GameObject:
   - component: {fileID: 476881002}
   - component: {fileID: 476881001}
   - component: {fileID: 476881000}
-  - component: {fileID: 476880999}
   - component: {fileID: 476881007}
   - component: {fileID: 476881004}
   - component: {fileID: 476881005}
@@ -352,18 +351,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &476880999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476880998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 820bce573ece94c4db365987d8598f5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &476881000
 Rigidbody2D:
   serializedVersion: 4
@@ -668,6 +655,7 @@ GameObject:
   - component: {fileID: 672850516}
   - component: {fileID: 672850518}
   - component: {fileID: 672850517}
+  - component: {fileID: 672850519}
   m_Layer: 0
   m_Name: Trees
   m_TagString: Untagged
@@ -1031,6 +1019,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &672850519
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672850515}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
 --- !u!1 &1257211423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,8 +1164,6 @@ MonoBehaviour:
   Dialog:
   - The mailbox is full to the brim with letters from various universities and research
     facilities per usual. They are all addressed to my mother.
-  - This should play the second time.
-  - This should play the third time.
   repeats: 0
   decor: {fileID: 1257211425}
   player: {fileID: 476881004}

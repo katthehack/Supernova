@@ -79,7 +79,7 @@ public class WalkCycle : MonoBehaviour
                     lastKey= KeyCode.S;
                 }
             }
-            if (walkCycle == 4 || walkCycle == 7) 
+            if (walkCycle == 3 || walkCycle == 6) 
             {
                 audioSource.PlayOneShot(RandomClip());
                 //some reason i think this is playing twice? fix
