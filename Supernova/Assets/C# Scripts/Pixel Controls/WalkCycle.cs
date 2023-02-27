@@ -12,6 +12,9 @@ public class WalkCycle : MonoBehaviour
     public Sprite[] left; //13 sprites 
     public Sprite[] right; //13 sprites 
 
+    public AudioSource audioSource;
+    public AudioClip[] audioClipArray;
+
     int walkCycle;
     int frame;
     KeyCode lastKey; //used to determine still frame
@@ -50,6 +53,10 @@ public class WalkCycle : MonoBehaviour
                     walkCycle++;
                     lastKey = KeyCode.A;
                 }
+                if(walkCycle==5||walkCycle==10) //play sound when character's foot is placed down
+                {
+                    audioSource.PlayOneShot(RandomClip());
+                }
             }
         }
         else if(Math.Abs(Input.GetAxis("Vertical")) > Math.Abs(Input.GetAxis("Horizontal")))//y axis movement
@@ -71,6 +78,11 @@ public class WalkCycle : MonoBehaviour
                     walkCycle++;
                     lastKey= KeyCode.S;
                 }
+            }
+            if (walkCycle == 4 || walkCycle == 7) 
+            {
+                audioSource.PlayOneShot(RandomClip());
+                //some reason i think this is playing twice? fix
             }
         }
         else 
@@ -99,5 +111,9 @@ public class WalkCycle : MonoBehaviour
         }
         transform.position += move * speed;
         frame++; 
+    }
+    AudioClip RandomClip()
+    {
+        return audioClipArray[UnityEngine.Random.Range(0, audioClipArray.Length - 1)];
     }
 }

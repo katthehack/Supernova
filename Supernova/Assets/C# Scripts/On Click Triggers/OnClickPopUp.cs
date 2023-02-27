@@ -44,7 +44,7 @@ public class OnClickPopUp : MonoBehaviour
                 Debug.Log("open");
                     repeats++;
                 }
-                else if (repeats>0&&Input.GetKeyDown(input))
+                else if (repeats>0&&Input.GetKeyDown(input)&&!lastDialogue)
                 {
                 popUpText.text = Dialog[repeats];
                 animator.SetTrigger("DialogueClose");
