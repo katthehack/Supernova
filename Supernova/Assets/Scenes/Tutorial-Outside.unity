@@ -1295,8 +1295,8 @@ MonoBehaviour:
     here Text here Text here Text here Text here Text here Text here Text here Text
     here Text here Text here Text here Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f3fdb70f5376ab74db002e4a9f60e577, type: 2}
-  m_sharedMaterial: {fileID: 5694285567440500972, guid: f3fdb70f5376ab74db002e4a9f60e577, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7165951fe8c535e4d9e6794e783af76a, type: 2}
+  m_sharedMaterial: {fileID: 6787051246379688054, guid: 7165951fe8c535e4d9e6794e783af76a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
