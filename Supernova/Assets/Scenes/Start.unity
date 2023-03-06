@@ -218,6 +218,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 842762619}
   animatorAreYouSure: {fileID: 476472325}
+  hoverTint: {r: 1, g: 0.6933962, b: 0.9795598, a: 1}
+  regular: {r: 1, g: 1, b: 1, a: 1}
+  button1: {fileID: 0}
+  button2: {fileID: 0}
+  button3: {fileID: 0}
 --- !u!224 &77098837
 RectTransform:
   m_ObjectHideFlags: 0
@@ -321,7 +326,7 @@ GameObject:
   - component: {fileID: 227331809}
   - component: {fileID: 227331810}
   m_Layer: 0
-  m_Name: Controls
+  m_Name: Controls Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1664,7 +1669,7 @@ GameObject:
   - component: {fileID: 1821123441}
   - component: {fileID: 1821123442}
   m_Layer: 0
-  m_Name: Exit Game
+  m_Name: Exit Game Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,11 +12,19 @@ public class ClickToPlay : MonoBehaviour
     Boolean openQuestion;
     int hover;
     Boolean controlsOpen = false;
+    public Color hoverTint;
+    public Color regular;
+    public SpriteRenderer button1;
+    public SpriteRenderer button2;
+    public SpriteRenderer button3;
     private void Start()
     {
         hover= 0;
         animator.Play("controls");
         openQuestion = false;
+        button1 = GameObject.Find("Start Button").GetComponent<SpriteRenderer>();
+        button2 = GameObject.Find("Controls Button").GetComponent<SpriteRenderer>();
+        button3 = GameObject.Find("Exit Game Button").GetComponent<SpriteRenderer>();
     }
     void Update()
     {
@@ -31,6 +39,23 @@ public class ClickToPlay : MonoBehaviour
         }
         if (openQuestion) hover = 2;
         else if (controlsOpen) hover = 1;
+        if (hover == 0)
+        {
+            button1.color = hoverTint;
+            button2.color = regular;
+        }
+        if(hover == 1)
+        {
+            button2.color = hoverTint;
+            button1.color = regular;
+            button3.color = regular;
+        }
+        if(hover == 2)
+        {
+            button3.color = hoverTint;
+            button2.color = regular;
+        }
+
         if (Input.GetKeyDown(click))
         {
             if (hover == 0) SceneManager.LoadScene("Tutorial-Outside");
