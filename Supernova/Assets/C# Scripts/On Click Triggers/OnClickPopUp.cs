@@ -21,6 +21,7 @@ public class OnClickPopUp : MonoBehaviour
     bool lastDialogue = false;
     public SpriteRenderer defaultSprite;
     public Sprite[] emotes;
+    public WalkCycle walkCycle;
     public void Start()
     {
         animator=animObject.GetComponent<Animator>();
@@ -29,9 +30,6 @@ public class OnClickPopUp : MonoBehaviour
     }
     public void Update()
     {
-       
-            decor = GameObject.FindWithTag("Decor").GetComponent<BoxCollider2D>(); //decor-any object that will be interactible
-            player = GameObject.FindWithTag("Player").GetComponent<BoxCollider2D>();
             if (decor.IsTouching(player) && animator != null&&Dialog.Length>1)
             {
             
@@ -42,8 +40,9 @@ public class OnClickPopUp : MonoBehaviour
                 defaultSprite.sprite = emotes[repeats];
                 Names.text = NameTag[repeats];
                 animator.Play("text box open");
-               
-                    repeats++;
+                walkCycle.enabled = false;
+
+                repeats++;
                 }
                 else if (repeats>0&&Input.GetKeyDown(input)&&!lastDialogue)
                 {
@@ -59,7 +58,8 @@ public class OnClickPopUp : MonoBehaviour
                     Debug.Log("close");
                     repeats=0;
                     lastDialogue = false;
-                }
+                walkCycle.enabled = true;
+            }
 
 
             }
@@ -76,6 +76,7 @@ public class OnClickPopUp : MonoBehaviour
                 animator.Play("text box open");
                 Debug.Log("open");
                 lastDialogue = true;
+                walkCycle.enabled = false;
             }
            
             else if (Input.GetKeyDown(input) && lastDialogue)
@@ -84,6 +85,7 @@ public class OnClickPopUp : MonoBehaviour
                 Debug.Log("close");
                 repeats = 0;
                 lastDialogue = false;
+                walkCycle.enabled = true;
             }
 
 

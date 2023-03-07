@@ -28,7 +28,7 @@ public class WalkCycle : MonoBehaviour
         gameObject.tag = "Player";
         frame = 1;
         walkCycle = 0; 
-        speed = 0.03f;
+        speed = 0.025f;
     }
 
     // Update is called once per frame
