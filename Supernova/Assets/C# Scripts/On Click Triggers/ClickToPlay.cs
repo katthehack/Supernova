@@ -14,9 +14,11 @@ public class ClickToPlay : MonoBehaviour
     Boolean controlsOpen = false;
     public Color hoverTint;
     public Color regular;
-    public SpriteRenderer button1;
-    public SpriteRenderer button2;
-    public SpriteRenderer button3;
+     SpriteRenderer button1;
+     SpriteRenderer button2;
+     SpriteRenderer button3;
+    public AudioSource audioSource;
+    public AudioClip[] audioOption;
     private void Start()
     {
         hover= 0;
@@ -32,10 +34,12 @@ public class ClickToPlay : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (hover != 0) hover--;
+            audioSource.PlayOneShot(audioOption[0]);
         }
         else if (Input.GetKeyDown(KeyCode.S)|| Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (hover != 2) hover++;
+            audioSource.PlayOneShot(audioOption[0]);
         }
         if (openQuestion) hover = 2;
         else if (controlsOpen) hover = 1;
@@ -58,27 +62,34 @@ public class ClickToPlay : MonoBehaviour
 
         if (Input.GetKeyDown(click))
         {
-            if (hover == 0) SceneManager.LoadScene("Tutorial-Outside");
-            else if (hover == 1&&!controlsOpen)
+            if (hover == 0)
+            {
+                SceneManager.LoadScene("Tutorial-Outside");
+                audioSource.PlayOneShot(audioOption[1]);
+            }
+            else if (hover == 1 && !controlsOpen)
             {
                 animator.Play("controls open");
-               
-              //  animator.Play("controls open idle");
+
+                //  animator.Play("controls open idle");
                 controlsOpen = true;
+                audioSource.PlayOneShot(audioOption[1]);
             }
             else if (hover == 1 && controlsOpen)
             {
                 animator.Play("controls close");
-              
-             //   animator.Play("controls");
+                audioSource.PlayOneShot(audioOption[1]);
+
+                //   animator.Play("controls");
                 controlsOpen = false;
             }
-            else if (hover == 2&&!openQuestion)
+            else if (hover == 2 && !openQuestion)
             {
                 animatorAreYouSure.Play("are you sure open");
                 openQuestion = true;
-                
-               
+                audioSource.PlayOneShot(audioOption[0]);
+
+
             }
             
             
@@ -91,11 +102,13 @@ public class ClickToPlay : MonoBehaviour
             {
                 Application.Quit();
                 Debug.Log("application quit");
+                audioSource.PlayOneShot(audioOption[1]);
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 animatorAreYouSure.Play("are you sure close");
                 openQuestion = false;
+                audioSource.PlayOneShot(audioOption[0]);
             }
             
         }
