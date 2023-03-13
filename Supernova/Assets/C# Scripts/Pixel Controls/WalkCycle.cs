@@ -41,19 +41,19 @@ public class WalkCycle : MonoBehaviour
             {
                 if (Input.GetAxis("Horizontal") > 0)
                 {
-                    if (walkCycle > 11) walkCycle = 0;
+                    if (walkCycle > 6) walkCycle = 0;
                     spriteRenderer.sprite = right[walkCycle];
                     walkCycle++;
                     lastKey = KeyCode.D;
                 }
                 else
                 {
-                    if (walkCycle > 11) walkCycle = 0;
+                    if (walkCycle > 6) walkCycle = 0;
                     spriteRenderer.sprite = left[walkCycle];
                     walkCycle++;
                     lastKey = KeyCode.A;
                 }
-                if(walkCycle==5||walkCycle==10) //play sound when character's foot is placed down
+                if(walkCycle==3||walkCycle==6) //play sound when character's foot is placed down
                 {
                     audioSource.PlayOneShot(RandomClip());
                 }
@@ -101,11 +101,11 @@ public class WalkCycle : MonoBehaviour
                 }
                 else if (lastKey == KeyCode.D)
                 {
-                    spriteRenderer.sprite = right[12];
+                    spriteRenderer.sprite = right[0];
                 }
                 else if (lastKey == KeyCode.A)
                 {
-                    spriteRenderer.sprite = left[12];
+                    spriteRenderer.sprite = left[0];
                 }
             }
         }

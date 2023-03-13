@@ -640,32 +640,22 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bb45bb3d65c54834c8b5e7bc5bf59864, type: 3}
   left:
   - {fileID: 21300000, guid: 65d720497c5af0a4cbebce2655106218, type: 3}
-  - {fileID: 21300000, guid: 49e5d4a728f0cee40a35504a23259086, type: 3}
   - {fileID: 21300000, guid: b909fbaf603a2e6469861920e377429a, type: 3}
   - {fileID: 21300000, guid: 0be690cd18568e44189664a3c6f5e2f8, type: 3}
   - {fileID: 21300000, guid: d5b4e95c80a31f945aa07271bd8c08df, type: 3}
-  - {fileID: 21300000, guid: 8ab617b6e77778f48aa91b556bcaa35e, type: 3}
   - {fileID: 21300000, guid: 965d3646bddbceb40b34a1229ba93664, type: 3}
-  - {fileID: 21300000, guid: f9bddd101d9f83346ab80fba5a53c4b2, type: 3}
   - {fileID: 21300000, guid: 4ead10f412f524d4aacb422f45e8d1d1, type: 3}
   - {fileID: 21300000, guid: 231aec0d116148343bc26520e9ca123b, type: 3}
   - {fileID: 21300000, guid: e8cf9e22045eb7f48b59f2bea6b8130a, type: 3}
-  - {fileID: 21300000, guid: d6b2ded837eec6443a9f7ef0dbb88ed7, type: 3}
-  - {fileID: 21300000, guid: 613db4b468b4b074ba515dc2d2999ce0, type: 3}
   right:
   - {fileID: 21300000, guid: 485d3db9fabb46540a104b16eb19fb8f, type: 3}
-  - {fileID: 21300000, guid: 7d08568e294ede0468d2560be3c6a58b, type: 3}
   - {fileID: 21300000, guid: f05f2e0f8dd8f83499efcf35379a666f, type: 3}
   - {fileID: 21300000, guid: 1676abf15a702f54e8d3f034e34235ba, type: 3}
   - {fileID: 21300000, guid: f34eb120f341c7343b7e98363012baae, type: 3}
-  - {fileID: 21300000, guid: b30fec558825ac14bbf29bd287547298, type: 3}
   - {fileID: 21300000, guid: c729eed49435b754aa58cf98e8a862c1, type: 3}
-  - {fileID: 21300000, guid: 8ea5d009b2c69554a9ab91ed591c5a96, type: 3}
   - {fileID: 21300000, guid: f40eae110ae84784891d40b1043632bb, type: 3}
   - {fileID: 21300000, guid: 4c107aca4320cea419c487bce632b51e, type: 3}
   - {fileID: 21300000, guid: 9f1c953990e44614d9c5f1b95e1e613c, type: 3}
-  - {fileID: 21300000, guid: 310adbf42af2a6c4cb2f3f9a762f9ee8, type: 3}
-  - {fileID: 21300000, guid: 9d9eb0cb874adae4bb05e6e10588d4df, type: 3}
   audioSource: {fileID: 1631393975}
   audioClipArray:
   - {fileID: 8300000, guid: a3b2938449675c644a85a772425e22ab, type: 3}
