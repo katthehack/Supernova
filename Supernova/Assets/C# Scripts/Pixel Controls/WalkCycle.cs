@@ -66,14 +66,14 @@ public class WalkCycle : MonoBehaviour
             {
                 if (Input.GetAxis("Vertical") > 0)
                 {
-                    if (walkCycle > 6) walkCycle = 0;
+                    if (walkCycle > 7) walkCycle = 0;
                     spriteRenderer.sprite = up[walkCycle];
                     walkCycle++;
                     lastKey = KeyCode.W;
                 }
                 else
                 {
-                    if (walkCycle > 6) walkCycle = 0;
+                    if (walkCycle > 7) walkCycle = 0;
                     spriteRenderer.sprite = down[walkCycle];
                     walkCycle++;
                     lastKey= KeyCode.S;
