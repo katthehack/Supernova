@@ -159,17 +159,29 @@ MonoBehaviour:
   playerTurn: 0
   rounds: 0
   solAbil1: Slingshot
+  solAbil11dmg: 2
   solAbil2: Not Availible
+  solAbil12dmg: 2
   solAbil3: Not Available
+  solAbil13dmg: 2
   solAbil4: Not Available
+  solAbil41dmg: 2
   astrumAbil1: Radiation
+  astrumAbil1dmg: 2
   astrumAbil2: Heaven's Blessing
+  astrumAbil2dmg: 2
   astrumAbil3: Glory
+  astrumAbil3dmg: 3
   astrumAbil4: Celestial Cartography
+  astrumAbil4dmg: 3
   allyAbil1: Not Availible
   allyAbil2: Not Availible
   allyAbil3: Not Availible
   allyAbil4: Not Availible
+  item1: Not Available
+  item2: Not Available
+  item3: Not Available
+  item4: Not Available
 --- !u!114 &52084177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,7 +277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -266, y: -225}
+  m_AnchoredPosition: {x: -329, y: -289}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &186660398
@@ -315,8 +327,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -791,7 +803,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 42ee6b9b74405ab4495eb65e0b300752, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ced5208b0becff4cba5bf04e751157a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1343,7 +1355,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 507ab5cef67e5a44aa7213a8d06be964, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f87efe4836431c74d9eeb88d1f6b95af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1473,7 +1485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 244.99995, y: -225}
+  m_AnchoredPosition: {x: 293, y: -289}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1804971108
@@ -1523,8 +1535,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1608,7 +1620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100.00004, y: -225}
+  m_AnchoredPosition: {x: -126, y: -289}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1876335136
@@ -1658,8 +1670,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1871,7 +1883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71.99996, y: -225}
+  m_AnchoredPosition: {x: 79, y: -289}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2013196614
@@ -1921,8 +1933,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

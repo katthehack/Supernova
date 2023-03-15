@@ -7,7 +7,6 @@ public class EnemyCombat : MonoBehaviour
     public CombatInventory combatInventory;
     public EnemyCombat enemyCombat;
     public PlayerCombat playerCombat;
-    KeyCode input = KeyCode.E;
 
     private void Start()
     {
