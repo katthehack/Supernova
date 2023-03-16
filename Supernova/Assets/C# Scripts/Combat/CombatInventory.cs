@@ -6,14 +6,16 @@ using UnityEngine;
 
 public class CombatInventory : MonoBehaviour
 {
-    public int playerHealth;
+    public int solHealth;
+    public int astrumHealth;
+    public int allyHealth;
     public int enemyHealth;
     public Boolean playerTurn = true;
     public int rounds;
 
     public String solAbil1 = "Slingshot";
     public int solAbil11dmg = 2;
-    public String solAbil2 = "Not Availible";
+    public String solAbil2 = "Not Available";
     public int solAbil12dmg = 2;
     public String solAbil3 = "Not Available";
     public int solAbil13dmg = 2;
@@ -29,10 +31,10 @@ public class CombatInventory : MonoBehaviour
     public String astrumAbil4 = "Celestial Cartography"; //increased damage against selected target by 3
     public int astrumAbil4dmg = 3;
 
-    public String allyAbil1 = "Not Availible";
-    public String allyAbil2 = "Not Availible";
-    public String allyAbil3 = "Not Availible";
-    public String allyAbil4 = "Not Availible";
+    public String allyAbil1 = "Not Available";
+    public String allyAbil2 = "Not Avaiaible";
+    public String allyAbil3 = "Not Available";
+    public String allyAbil4 = "Not Available";
 
     public String item1 = "Not Available";
     public String item2 = "Not Available";

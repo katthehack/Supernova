@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -23,9 +24,10 @@ public class PlayerCombat : MonoBehaviour
     KeyCode back = KeyCode.Q;
     int fontSize, fontHoverSize;
     Boolean sol, astrum, ally, powers,action,item;
-    public TMP_Text Ability1, Ability2, Ability3, Ability4;
-    Boolean solSelect, astrumSelect, allySelect;
-    int solSelectAbil, astrumSelectAbil, allySelectAbil;
+    public TMP_Text Ability1, Ability2, Ability3, Ability4; //displays abilities text
+    Boolean solSelect, astrumSelect, allySelect; //has player selected an attack for them yet
+    int solSelectAbil, astrumSelectAbil, allySelectAbil; //which abil 1-4 is activated
+    public TMP_Text astrumHealth, solHealth, allyHealth, enemyHealth, roundsDisplay; //displays health
 
     private void Start()
     {
@@ -50,6 +52,11 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        solHealth.text = combatInventory.solHealth.ToString();
+        astrumHealth.text = combatInventory.astrumHealth.ToString();
+        allyHealth.text = combatInventory.allyHealth.ToString();
+        enemyHealth.text = combatInventory.enemyHealth.ToString();
+        roundsDisplay.text = "Round "+combatInventory.rounds.ToString();
         if (!powers) //character select window
         {
             Ability1.fontSize = fontSize;
@@ -300,13 +307,14 @@ public class PlayerCombat : MonoBehaviour
         */
 
 
-        if (combatInventory.playerHealth == 0) //end game
+     /*   if (combatInventory.solHealth == 0 && combatInventory.astrumHealth == 0 && combatInventory.allyHealth == 0) //end game
         {
-            SceneManager.LoadScene("Tutorial=Inside");
+            SceneManager.LoadScene("Tutorial-Inside");
         }
         else if (combatInventory.enemyHealth == 0)
         {
 
         }
+     */
     }
 }

@@ -19,7 +19,7 @@ public class EnemyCombat : MonoBehaviour
     {
         if(!combatInventory.playerTurn)
         {
-            combatInventory.playerHealth--;
+          //  combatInventory.solHealth--;
             combatInventory.playerTurn = true;
             combatInventory.rounds++;
         }
