@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8a7cc6b3becd57e488988a08a32b3f9c
+guid: 5001e658fd013ef4a8f83ba35d5f9f33
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Wholesome Bundle Theyre A Child
+  - Starshine
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
