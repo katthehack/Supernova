@@ -14,10 +14,9 @@ public class PlayerCombat : MonoBehaviour
     int characterSelect;
     int abilitySelect;
     int typeSelect;
-    SpriteRenderer solBox;
-    SpriteRenderer astrumBox;
-    SpriteRenderer allyBox;
+    SpriteRenderer solBox, astrumBox, allyBox,solExpression,astrumExpression,allyExpression;
     public Sprite[] frame;
+    public Sprite[] characterEmotions;
     public AudioSource audioSource;
     public AudioClip[] audioOption;
     KeyCode input = KeyCode.E;
@@ -38,6 +37,9 @@ public class PlayerCombat : MonoBehaviour
         solBox = GameObject.Find("Sol box").GetComponent<SpriteRenderer>();
         astrumBox = GameObject.Find("Astrum box").GetComponent<SpriteRenderer>();
         allyBox = GameObject.Find("Ally box").GetComponent<SpriteRenderer>();
+        solExpression = GameObject.Find("Sol drawing").GetComponent<SpriteRenderer>();
+        astrumExpression = GameObject.Find("Astrum drawing").GetComponent<SpriteRenderer>();
+        allyExpression = GameObject.Find("Ally drawing").GetComponent<SpriteRenderer>();
         sol = astrum = ally = powers = false; //where user is hovering in powers
         fontSize = 25;
         fontHoverSize = 30;
@@ -67,6 +69,9 @@ public class PlayerCombat : MonoBehaviour
             Ability2.text = "Item";
             Ability3.text = "Block";
             Ability4.text = "Run";
+            if (combatInventory.solHealth <= 5) solExpression.sprite = characterEmotions[6];
+            if (combatInventory.astrumHealth <= 5) astrumExpression.sprite = characterEmotions[7];
+            if (combatInventory.allyHealth <= 5) allyExpression.sprite = characterEmotions[8];
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (characterSelect != 0) characterSelect--;
@@ -82,6 +87,8 @@ public class PlayerCombat : MonoBehaviour
             {
                 solBox.sprite = frame[0];
                 astrumBox.sprite = frame[4];
+                solExpression.sprite = characterEmotions[3];
+                if(combatInventory.astrumHealth>5) astrumExpression.sprite = characterEmotions[1];
                 
             }
             else if (characterSelect == 1)
@@ -89,26 +96,49 @@ public class PlayerCombat : MonoBehaviour
                 astrumBox.sprite = frame[1];
                 solBox.sprite = frame[3];
                 allyBox.sprite = frame[5];
+                astrumExpression.sprite = characterEmotions[4];
+                if (combatInventory.solHealth > 5) solExpression.sprite = characterEmotions[0];
+                if (combatInventory.allyHealth > 5) allyExpression.sprite = characterEmotions[2];
 
             }
             else if (characterSelect == 2)
             {
                 allyBox.sprite = frame[2];
                 astrumBox.sprite = frame[4];
+                allyExpression.sprite = characterEmotions[5];
+                if (combatInventory.astrumHealth > 5) astrumExpression.sprite = characterEmotions[1];
 
             }
 
             if (combatInventory.playerTurn && Input.GetKeyDown(input))
             {
-                if (characterSelect == 0) sol = true;
-                else if (characterSelect == 1) astrum = true;
-                else if (characterSelect == 2) ally = true;
-                action = true;
-                powers = true;
-                abilitySelect = 0;
-                typeSelect = 0;
-                audioSource.PlayOneShot(audioOption[1]);
-
+                if (characterSelect == 0 && !solSelect)
+                {
+                    sol = true;
+                    action = true;
+                    powers = true;
+                    abilitySelect = 0;
+                    typeSelect = 0;
+                    audioSource.PlayOneShot(audioOption[1]);
+                }
+                else if (characterSelect == 1 && !astrumSelect)
+                {
+                    astrum = true;
+                    action = true;
+                    powers = true;
+                    abilitySelect = 0;
+                    typeSelect = 0;
+                    audioSource.PlayOneShot(audioOption[1]);
+                }
+                else if (characterSelect == 2 && !allySelect)
+                {
+                    ally = true;
+                    action = true;
+                    powers = true;
+                    abilitySelect = 0;
+                    typeSelect = 0;
+                    audioSource.PlayOneShot(audioOption[1]);
+                }
             }
         }
 
@@ -294,28 +324,22 @@ public class PlayerCombat : MonoBehaviour
             }
         }
 
-        if(solSelect&&allySelect&&astrumSelect)
+        if(solSelect&&allySelect&&astrumSelect) //order selected is order attacked-implement
         {
             combatInventory.playerTurn = false;
             solSelect = allySelect = astrumSelect = false;
         }
-        /*
-        if (combatInventory.playerTurn && Input.GetKeyDown(input))
-        {
-            combatInventory.enemyHealth--;
-            combatInventory.playerTurn = false;
-        }
-        */
 
-
-     /*   if (combatInventory.solHealth == 0 && combatInventory.astrumHealth == 0 && combatInventory.allyHealth == 0) //end game
+        if (combatInventory.solHealth == 0 && combatInventory.astrumHealth == 0 && combatInventory.allyHealth == 0) //end game
         {
             SceneManager.LoadScene("Tutorial-Inside");
+            Debug.Log("Ally win");
         }
         else if (combatInventory.enemyHealth == 0)
         {
-
+            SceneManager.LoadScene("Tutorial-Inside");
+            Debug.Log("Enemy win");
         }
-     */
+        
     }
 }

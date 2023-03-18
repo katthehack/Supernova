@@ -151,7 +151,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.7264151, g: 0.63347167, b: 0.51054645, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1659,9 +1659,9 @@ MonoBehaviour:
   emotes:
   - {fileID: 21300000, guid: f87efe4836431c74d9eeb88d1f6b95af, type: 3}
   walkCycle: {fileID: 676662949}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 998927507}
   audioClipArray:
-  - {fileID: 8300000, guid: fe89526e99c94ab45b21ed282c884250, type: 3}
+  - {fileID: 8300000, guid: 185a1950f9e8f6b45b37fe45c7874210, type: 3}
 --- !u!1 &2122387753
 GameObject:
   m_ObjectHideFlags: 0

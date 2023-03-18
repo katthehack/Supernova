@@ -41,5 +41,21 @@ public class CombatInventory : MonoBehaviour
     public String item3 = "Not Available";
     public String item4 = "Not Available";
 
+    public String enemyAbil1 = "Venom";
+    public int enemyAbil1Type = 4; //0-heal, 1-shield, 2-attack buff, 3-stun, 4-attack
+    public int enemyAbil1Damage = 2;
+    public String enemyAbil2 = "Paralyze";
+    public int enemyAbil12ype = 3; //higher the # higher the probability, numbers change after start
+    public int enemyAbil2Damage = 1;
+    public String enemyAbil3 = "Bravery";
+    public int enemyAbil3Type = 2;
+    public int enemyAbil3Damage = 3;
+    public String enemyAbil4 = "Exoskeleton";
+    public int enemyAbil4Type = 1;
+    public float enemyAbil4Damage = 0.5f;
 
+    public int prob1 = 4;
+    public int prob2 = 3;
+    public int prob3 = 2;
+    public int prob4 = 1;
 }
