@@ -296,7 +296,8 @@ public class PlayerCombat : MonoBehaviour
 
         if(solSelect&&allySelect&&astrumSelect)
         {
-
+            combatInventory.playerTurn = false;
+            solSelect = allySelect = astrumSelect = false;
         }
         /*
         if (combatInventory.playerTurn && Input.GetKeyDown(input))

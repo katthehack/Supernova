@@ -22,6 +22,8 @@ public class OnClickPopUp : MonoBehaviour
     public SpriteRenderer defaultSprite;
     public Sprite[] emotes;
     public WalkCycle walkCycle;
+    public AudioSource audioSource;
+    public AudioClip[] audioClipArray;
     public void Start()
     {
         animator=animObject.GetComponent<Animator>();
@@ -34,13 +36,14 @@ public class OnClickPopUp : MonoBehaviour
             {
             
                 Debug.Log("collided");
-                if (repeats==0&&Input.GetKeyDown(input))
-                {
+            if (repeats == 0 && Input.GetKeyDown(input))
+            {
                 popUpText.text = Dialog[repeats];
                 defaultSprite.sprite = emotes[repeats];
                 Names.text = NameTag[repeats];
                 animator.Play("text box open");
                 walkCycle.enabled = false;
+                audioSource.PlayOneShot(audioClipArray[repeats]);
 
                 repeats++;
                 }
@@ -59,7 +62,7 @@ public class OnClickPopUp : MonoBehaviour
                     repeats=0;
                     lastDialogue = false;
                 walkCycle.enabled = true;
-            }
+                }
 
 
             }
@@ -73,6 +76,7 @@ public class OnClickPopUp : MonoBehaviour
                 popUpText.text = Dialog[repeats];
                 defaultSprite.sprite = emotes[repeats];
                 Names.text = NameTag[repeats];
+                audioSource.PlayOneShot(audioClipArray[repeats]);
                 animator.Play("text box open");
                 Debug.Log("open");
                 lastDialogue = true;
