@@ -598,7 +598,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 204256246, guid: 12e7ea8d929db26408b584f4c601a436, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2758,7 +2758,7 @@ MonoBehaviour:
   animObject: {fileID: 395910157}
   defaultSprite: {fileID: 2126267721}
   emotes:
-  - {fileID: 21300000, guid: 507ab5cef67e5a44aa7213a8d06be964, type: 3}
+  - {fileID: 21300000, guid: dd659d88a0fc3284da95602606864010, type: 3}
   walkCycle: {fileID: 476881007}
   audioSource: {fileID: 1407887791}
   audioClipArray:
@@ -3249,7 +3249,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 204256246, guid: 12e7ea8d929db26408b584f4c601a436, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12431,7 +12431,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: f87efe4836431c74d9eeb88d1f6b95af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd659d88a0fc3284da95602606864010, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

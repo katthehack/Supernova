@@ -14,7 +14,7 @@ public class PlayerCombat : MonoBehaviour
     int characterSelect;
     int abilitySelect;
     int typeSelect;
-    SpriteRenderer solBox, astrumBox, allyBox,solExpression,astrumExpression,allyExpression;
+    SpriteRenderer solBox, astrumBox, allyBox,solExpression,astrumExpression,allyExpression, icon1, icon2, icon3;
     public Sprite[] frame;
     public Sprite[] characterEmotions;
     public AudioSource audioSource;
@@ -27,6 +27,8 @@ public class PlayerCombat : MonoBehaviour
     Boolean solSelect, astrumSelect, allySelect; //has player selected an attack for them yet
     int solSelectAbil, astrumSelectAbil, allySelectAbil; //which abil 1-4 is activated
     public TMP_Text astrumHealth, solHealth, allyHealth, enemyHealth, roundsDisplay; //displays health
+    String[] characterOrderDisplay;
+    int characterOrderDisplayNum;
 
     private void Start()
     {
@@ -40,6 +42,9 @@ public class PlayerCombat : MonoBehaviour
         solExpression = GameObject.Find("Sol drawing").GetComponent<SpriteRenderer>();
         astrumExpression = GameObject.Find("Astrum drawing").GetComponent<SpriteRenderer>();
         allyExpression = GameObject.Find("Ally drawing").GetComponent<SpriteRenderer>();
+        icon1 = GameObject.Find("Icon 1").GetComponent<SpriteRenderer>();
+        icon2 = GameObject.Find("Icon 2").GetComponent<SpriteRenderer>();
+        icon3 = GameObject.Find("Icon 3").GetComponent<SpriteRenderer>();
         sol = astrum = ally = powers = false; //where user is hovering in powers
         fontSize = 25;
         fontHoverSize = 30;
@@ -50,6 +55,8 @@ public class PlayerCombat : MonoBehaviour
         Ability2.text = "Item";
         Ability3.text = "Block";
         Ability4.text = "Run";
+        characterOrderDisplay = new String[3];
+        characterOrderDisplayNum = 0;
     }
     // Update is called once per frame
     void Update()
@@ -59,6 +66,60 @@ public class PlayerCombat : MonoBehaviour
         allyHealth.text = combatInventory.allyHealth.ToString();
         enemyHealth.text = combatInventory.enemyHealth.ToString();
         roundsDisplay.text = "Round "+combatInventory.rounds.ToString();
+        switch (characterOrderDisplay[0])
+        {
+            case "Sol":
+                icon1.sprite = characterEmotions[3];
+                Debug.Log("Sol 1");
+                break;
+            case "Astrum":
+                icon1.sprite = characterEmotions[4];
+                Debug.Log("Astrum 1");
+                break;
+            case "Ally":
+                icon1.sprite = characterEmotions[5];
+                Debug.Log("Ally 1");
+                break;
+            default:
+                Debug.Log("default");
+                icon1.sprite = characterEmotions[9];
+                break;
+        }
+        switch (characterOrderDisplay[1])
+        {
+            case "Sol":
+                icon2.sprite = characterEmotions[3];
+                break;
+            case "Astrum":
+                icon2.sprite = characterEmotions[4];
+                break;
+            case "Ally":
+                icon2.sprite = characterEmotions[5];
+                break;
+            default:
+                Debug.Log("default");
+                icon2.sprite = characterEmotions[9];
+                break;
+        }
+        switch (characterOrderDisplay[2])
+        {
+            case "Sol":
+                icon3.sprite = characterEmotions[3];
+                Debug.Log("Sol 3");
+                break;
+            case "Astrum":
+                icon3.sprite = characterEmotions[4];
+                Debug.Log("Astrum 3");
+                break;
+            case "Ally":
+                icon3.sprite = characterEmotions[5];
+                Debug.Log("Ally 3");
+                break;
+            default:
+                Debug.Log("default 3");
+                icon3.sprite = characterEmotions[9];
+                break;
+        }
         if (!powers) //character select window
         {
             Ability1.fontSize = fontSize;
@@ -267,6 +328,8 @@ public class PlayerCombat : MonoBehaviour
                 solSelect = true;
                 sol=astrum=ally=powers = false;
                 audioSource.PlayOneShot(audioOption[1]);
+                characterOrderDisplay[characterOrderDisplayNum] = "Sol";
+                characterOrderDisplayNum++;
             }
             else if (astrum && Input.GetKeyDown(input))
             {
@@ -274,6 +337,8 @@ public class PlayerCombat : MonoBehaviour
                 astrumSelect = true;
                 sol = astrum = ally = powers = false;
                 audioSource.PlayOneShot(audioOption[1]);
+                characterOrderDisplay[characterOrderDisplayNum] = "Astrum";
+                characterOrderDisplayNum++;
             }
             else if (ally && Input.GetKeyDown(input))
             {
@@ -281,6 +346,8 @@ public class PlayerCombat : MonoBehaviour
                 allySelect = true;
                 sol = astrum = ally = powers = false;
                 audioSource.PlayOneShot(audioOption[1]);
+                characterOrderDisplay[characterOrderDisplayNum] = "Ally";
+                characterOrderDisplayNum++;
             }
             else if (Input.GetKeyDown(back)) 
             {
@@ -328,6 +395,12 @@ public class PlayerCombat : MonoBehaviour
         {
             combatInventory.playerTurn = false;
             solSelect = allySelect = astrumSelect = false;
+            characterOrderDisplayNum = 0 ;
+            for(int i=0;i<3;i++)
+            {
+                characterOrderDisplay[i] = "";
+            }
+            
         }
 
         if (combatInventory.solHealth == 0 && combatInventory.astrumHealth == 0 && combatInventory.allyHealth == 0) //end game

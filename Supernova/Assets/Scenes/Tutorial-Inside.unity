@@ -813,7 +813,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: f87efe4836431c74d9eeb88d1f6b95af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd659d88a0fc3284da95602606864010, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1657,7 +1657,7 @@ MonoBehaviour:
   animObject: {fileID: 322006153}
   defaultSprite: {fileID: 903096297}
   emotes:
-  - {fileID: 21300000, guid: f87efe4836431c74d9eeb88d1f6b95af, type: 3}
+  - {fileID: 21300000, guid: dd659d88a0fc3284da95602606864010, type: 3}
   walkCycle: {fileID: 676662949}
   audioSource: {fileID: 998927507}
   audioClipArray:
