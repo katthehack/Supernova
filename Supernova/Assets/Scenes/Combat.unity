@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 52084179}
-  - component: {fileID: 52084178}
   - component: {fileID: 52084177}
+  - component: {fileID: 52084178}
   - component: {fileID: 52084176}
   m_Layer: 0
   m_Name: Script Holder
@@ -195,7 +195,7 @@ MonoBehaviour:
   enemyAbil3Damage: 3
   enemyAbil4: Exoskeleton
   enemyAbil4Type: 1
-  enemyAbil4Damage: 0.5
+  enemyAbil4Damage: 2
   prob1: 4
   prob2: 3
   prob3: 2
