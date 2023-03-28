@@ -28,84 +28,86 @@ public class WalkCycle : MonoBehaviour
         gameObject.tag = "Player";
         frame = 1;
         walkCycle = 0; 
-        speed = 0.025f;
+        speed = 0.035f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Math.Abs(Input.GetAxis("Horizontal")) > Math.Abs(Input.GetAxis("Vertical"))) //x axis movement
+        if (frame % 20==0)
         {
-            move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-            if(frame % 24 == 0)
+            if (Math.Abs(Input.GetAxis("Horizontal")) > Math.Abs(Input.GetAxis("Vertical"))) //x axis movement
             {
-                if (Input.GetAxis("Horizontal") > 0)
+                move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+             //   if (frame % 24 == 0)
                 {
-                    if (walkCycle > 6) walkCycle = 0;
-                    spriteRenderer.sprite = right[walkCycle];
-                    walkCycle++;
-                    lastKey = KeyCode.D;
+                    if (Input.GetAxis("Horizontal") > 0)
+                    {
+                        if (walkCycle > 6) walkCycle = 0;
+                        spriteRenderer.sprite = right[walkCycle];
+                        walkCycle++;
+                        lastKey = KeyCode.D;
+                    }
+                    else
+                    {
+                        if (walkCycle > 6) walkCycle = 0;
+                        spriteRenderer.sprite = left[walkCycle];
+                        walkCycle++;
+                        lastKey = KeyCode.A;
+                    }
+                    if (walkCycle == 3 || walkCycle == 6) //play sound when character's foot is placed down
+                    {
+                        audioSource.PlayOneShot(RandomClip());
+                    }
                 }
-                else
+            }
+            else if (Math.Abs(Input.GetAxis("Vertical")) > Math.Abs(Input.GetAxis("Horizontal")))//y axis movement
+            {
+                move = new Vector3(0, Input.GetAxis("Vertical"), 0);
+             //   if (frame % 24 == 0)
                 {
-                    if (walkCycle > 6) walkCycle = 0;
-                    spriteRenderer.sprite = left[walkCycle];
-                    walkCycle++;
-                    lastKey = KeyCode.A;
+                    if (Input.GetAxis("Vertical") > 0)
+                    {
+                        if (walkCycle > 7) walkCycle = 0;
+                        spriteRenderer.sprite = up[walkCycle];
+                        walkCycle++;
+                        lastKey = KeyCode.W;
+                    }
+                    else
+                    {
+                        if (walkCycle > 7) walkCycle = 0;
+                        spriteRenderer.sprite = down[walkCycle];
+                        walkCycle++;
+                        lastKey = KeyCode.S;
+                    }
                 }
-                if(walkCycle==3||walkCycle==6) //play sound when character's foot is placed down
+                if (walkCycle == 3 || walkCycle == 6)
                 {
                     audioSource.PlayOneShot(RandomClip());
                 }
             }
-        }
-        else if(Math.Abs(Input.GetAxis("Vertical")) > Math.Abs(Input.GetAxis("Horizontal")))//y axis movement
-        {
-            move = new Vector3(0, Input.GetAxis("Vertical"), 0);
-            if(frame % 24 == 0)
+            else
             {
-                if (Input.GetAxis("Vertical") > 0)
+                move = new Vector3(0, 0, 0);
+            //    if (frame % 24 == 0)
                 {
-                    if (walkCycle > 7) walkCycle = 0;
-                    spriteRenderer.sprite = up[walkCycle];
-                    walkCycle++;
-                    lastKey = KeyCode.W;
-                }
-                else
-                {
-                    if (walkCycle > 7) walkCycle = 0;
-                    spriteRenderer.sprite = down[walkCycle];
-                    walkCycle++;
-                    lastKey= KeyCode.S;
-                }
-            }
-            if (walkCycle == 3 || walkCycle == 6) 
-            {
-                audioSource.PlayOneShot(RandomClip());
-                //some reason i think this is playing twice? fix
-            }
-        }
-        else 
-        {
-            move = new Vector3(0, 0, 0);
-            if(frame % 24 == 0)
-            {
-                walkCycle = 0;
-                if(lastKey == KeyCode.S)
-                {
-                    spriteRenderer.sprite = down[7];
-                }
-                else if(lastKey == KeyCode.W)
-                {
-                    spriteRenderer.sprite = up[7];
-                }
-                else if (lastKey == KeyCode.D)
-                {
-                    spriteRenderer.sprite = right[0];
-                }
-                else if (lastKey == KeyCode.A)
-                {
-                    spriteRenderer.sprite = left[0];
+                    walkCycle = 0;
+                    if (lastKey == KeyCode.S)
+                    {
+                        spriteRenderer.sprite = down[7];
+                    }
+                    else if (lastKey == KeyCode.W)
+                    {
+                        spriteRenderer.sprite = up[7];
+                    }
+                    else if (lastKey == KeyCode.D)
+                    {
+                        spriteRenderer.sprite = right[0];
+                    }
+                    else if (lastKey == KeyCode.A)
+                    {
+                        spriteRenderer.sprite = left[0];
+                    }
                 }
             }
         }
