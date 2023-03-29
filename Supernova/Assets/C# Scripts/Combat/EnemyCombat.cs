@@ -16,6 +16,7 @@ public class EnemyCombat : MonoBehaviour
         combatInventory=gameObject.GetComponent<CombatInventory>();
         enemyCombat=gameObject.GetComponent<EnemyCombat>();
         playerCombat=gameObject.GetComponent<PlayerCombat>();
+        combatInventory.playerTurn = true;
     }
     // Update is called once per frame
     void Update()

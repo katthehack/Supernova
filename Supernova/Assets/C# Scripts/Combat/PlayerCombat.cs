@@ -57,6 +57,8 @@ public class PlayerCombat : MonoBehaviour
         Ability4.text = "Run";
         characterOrderDisplay = new String[3];
         characterOrderDisplayNum = 0;
+        combatInventory.playerTurn = true;
+
     }
     // Update is called once per frame
     void Update()
@@ -176,30 +178,22 @@ public class PlayerCombat : MonoBehaviour
                 if (characterSelect == 0 && !solSelect)
                 {
                     sol = true;
-                    action = true;
-                    powers = true;
-                    abilitySelect = 0;
-                    typeSelect = 0;
-                    audioSource.PlayOneShot(audioOption[1]);
+                    
                 }
                 else if (characterSelect == 1 && !astrumSelect)
                 {
                     astrum = true;
-                    action = true;
-                    powers = true;
-                    abilitySelect = 0;
-                    typeSelect = 0;
-                    audioSource.PlayOneShot(audioOption[1]);
+                  
                 }
                 else if (characterSelect == 2 && !allySelect)
                 {
                     ally = true;
-                    action = true;
-                    powers = true;
-                    abilitySelect = 0;
-                    typeSelect = 0;
-                    audioSource.PlayOneShot(audioOption[1]);
                 }
+                action = true;
+                powers = true;
+                abilitySelect = 0;
+                typeSelect = 0;
+                audioSource.PlayOneShot(audioOption[1]);
             }
         }
 

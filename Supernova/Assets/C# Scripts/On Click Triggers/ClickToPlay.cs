@@ -9,6 +9,7 @@ public class ClickToPlay : MonoBehaviour
     public Animator animator;
     public Animator animatorAreYouSure;
     KeyCode click = KeyCode.E;
+    KeyCode back = KeyCode.Q;
     Boolean openQuestion;
     int hover;
     Boolean controlsOpen = false;
@@ -104,7 +105,7 @@ public class ClickToPlay : MonoBehaviour
                 Debug.Log("application quit");
                 audioSource.PlayOneShot(audioOption[1]);
             }
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(back))
             {
                 animatorAreYouSure.Play("are you sure close");
                 openQuestion = false;
