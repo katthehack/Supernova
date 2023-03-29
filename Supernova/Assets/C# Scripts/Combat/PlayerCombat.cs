@@ -24,7 +24,7 @@ public class PlayerCombat : MonoBehaviour
     int fontSize, fontHoverSize;
     Boolean sol, astrum, ally, powers,action,item;
     public TMP_Text Ability1, Ability2, Ability3, Ability4; //displays abilities text
-    Boolean solSelect, astrumSelect, allySelect; //has player selected an attack for them yet
+    public Boolean solSelect, astrumSelect, allySelect; //has player selected an attack for them yet
     int solSelectAbil, astrumSelectAbil, allySelectAbil; //which abil 1-4 is activated
     public TMP_Text astrumHealth, solHealth, allyHealth, enemyHealth, roundsDisplay; //displays health
     String[] characterOrderDisplay;
@@ -178,22 +178,32 @@ public class PlayerCombat : MonoBehaviour
                 if (characterSelect == 0 && !solSelect)
                 {
                     sol = true;
-                    
+                    action = true;
+                    powers = true;
+                    abilitySelect = 0;
+                    typeSelect = 0;
+                    audioSource.PlayOneShot(audioOption[1]);
                 }
                 else if (characterSelect == 1 && !astrumSelect)
                 {
                     astrum = true;
-                  
+                    action = true;
+                    powers = true;
+                    abilitySelect = 0;
+                    typeSelect = 0;
+                    audioSource.PlayOneShot(audioOption[1]);
+
                 }
                 else if (characterSelect == 2 && !allySelect)
                 {
                     ally = true;
+                    action = true;
+                    powers = true;
+                    abilitySelect = 0;
+                    typeSelect = 0;
+                    audioSource.PlayOneShot(audioOption[1]);
                 }
-                action = true;
-                powers = true;
-                abilitySelect = 0;
-                typeSelect = 0;
-                audioSource.PlayOneShot(audioOption[1]);
+                
             }
         }
 
@@ -386,10 +396,11 @@ public class PlayerCombat : MonoBehaviour
         }
 
         if(solSelect&&allySelect&&astrumSelect) //order selected is order attacked-implement
-        {
+        {//also implement check for stunned-if stunned don't attack
             combatInventory.playerTurn = false;
             solSelect = allySelect = astrumSelect = false;
             characterOrderDisplayNum = 0 ;
+            combatInventory.solStunned = combatInventory.astrumStunned = combatInventory.allyStunned = false;
             for(int i=0;i<3;i++)
             {
                 characterOrderDisplay[i] = "";

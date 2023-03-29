@@ -45,7 +45,7 @@ public class CombatInventory : MonoBehaviour
     public int enemyAbil1Type = 4; //0-heal, 1-shield, 2-attack buff, 3-stun, 4-attack
     public int enemyAbil1Damage = 2;
     public String enemyAbil2 = "Paralyze";
-    public int enemyAbil12ype = 3; 
+    public int enemyAbil2Type = 3; 
     public int enemyAbil2Damage = 1;
     public String enemyAbil3 = "Bravery";
     public int enemyAbil3Type = 2;
@@ -58,4 +58,10 @@ public class CombatInventory : MonoBehaviour
     public int prob2 = 3;//enemyAbilType #s don't change, as it determines what type of attack it is, but prob# changes throughout combat cycle
     public int prob3 = 2;
     public int prob4 = 1;
+
+    public Boolean solStunned = false;
+    public Boolean astrumStunned = false;
+    public Boolean allyStunned = false;
+
+    public Boolean enemyShield = false;
 }
