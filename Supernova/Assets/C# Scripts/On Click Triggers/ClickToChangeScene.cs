@@ -19,7 +19,9 @@ public class ClickToChangeScene : MonoBehaviour
     bool lastDialogue = false;
     public SpriteRenderer defaultSprite;
     public Sprite[] emotes;
-    public WalkCycle walkCycle;
+   public WalkCycle walkCycle;
+    public AudioSource audioSource;
+    public AudioClip audioClip;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,11 +49,13 @@ public class ClickToChangeScene : MonoBehaviour
 
             else if (Input.GetKeyDown(input) && lastDialogue)
             {
+                //eventually add animator playing fade to black
                 SceneManager.LoadScene("Tutorial-Inside");
                 Debug.Log("next scene");
                 lastDialogue = false;
                 walkCycle.enabled = true;
-                
+                audioSource.PlayOneShot(audioClip);
+
             }
             else if (Input.GetKeyDown(back) && lastDialogue)
             {

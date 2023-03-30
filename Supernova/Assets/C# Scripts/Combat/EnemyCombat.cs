@@ -31,9 +31,96 @@ public class EnemyCombat : MonoBehaviour
             //for lowest health gets highest chance-make all health 10-health to flip the #s
             if (abilUsed<=combatInventory.prob1)
             {
-                if (charAttacked <= combatInventory.solHealth) combatInventory.solHealth-=combatInventory.enemyAbil1Damage; //rn all abilities damage-add checks for abiltype later
-                else if (charAttacked <= combatInventory.solHealth+ combatInventory.astrumHealth&&charAttacked> combatInventory.solHealth) combatInventory.astrumHealth -= combatInventory.enemyAbil1Damage; 
-                else combatInventory.allyHealth -= combatInventory.enemyAbil1Damage;
+                if (charAttacked <= combatInventory.solHealth)
+                {
+                    switch (combatInventory.enemyAbil1Type)
+                    {
+                        case 4:
+                            if (attackBuffed)
+                            {
+                                combatInventory.solHealth -= combatInventory.enemyAbil1Damage * 2;
+                                attackBuffed = false;
+                            }
+                            else combatInventory.solHealth -= combatInventory.enemyAbil1Damage;
+                            break;
+                        case 0:
+                            combatInventory.enemyHealth += combatInventory.enemyAbil1Damage;
+                            break;
+                        case 3:
+                            combatInventory.solStunned = true;
+                            combatInventory.allyHealth -= combatInventory.enemyAbil3Damage;
+                            break;
+                        case 1:
+                            combatInventory.enemyShield = true;
+                            break;
+                        case 2:
+                            attackBuffed = true;
+                            break;
+                        default: //temporary
+                            combatInventory.solHealth -= combatInventory.enemyAbil1Damage;
+                            break;
+                    }
+                }
+                else if (charAttacked <= combatInventory.solHealth + combatInventory.astrumHealth && charAttacked > combatInventory.solHealth)
+                {
+                    switch (combatInventory.enemyAbil1Type)
+                    {
+                        case 4:
+                            if (attackBuffed)
+                            {
+                                combatInventory.astrumHealth -= combatInventory.enemyAbil1Damage * 2;
+                                attackBuffed = false;
+                            }
+                            else combatInventory.astrumHealth -= combatInventory.enemyAbil1Damage;
+                            break;
+                        case 0:
+                            combatInventory.enemyHealth += combatInventory.enemyAbil1Damage;
+                            break;
+                        case 3:
+                            combatInventory.allyHealth -= combatInventory.enemyAbil3Damage;
+                            combatInventory.astrumStunned = true;
+                            break;
+                        case 1:
+                            combatInventory.enemyShield = true;
+                            break;
+                        case 2:
+                            attackBuffed = true;
+                            break;
+                        default: //temporary
+                            combatInventory.astrumHealth -= combatInventory.enemyAbil1Damage;
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (combatInventory.enemyAbil1Type)
+                    {
+                        case 4:
+                            if (attackBuffed)
+                            {
+                                combatInventory.allyHealth -= combatInventory.enemyAbil1Damage * 2;
+                                attackBuffed = false;
+                            }
+                            else combatInventory.allyHealth -= combatInventory.enemyAbil1Damage;
+                            break;
+                        case 0:
+                            combatInventory.enemyHealth += combatInventory.enemyAbil1Damage;
+                            break;
+                        case 3:
+                            combatInventory.allyStunned = true;
+                            combatInventory.allyHealth -= combatInventory.enemyAbil3Damage;
+                            break;
+                        case 1:
+                            combatInventory.enemyShield = true;
+                            break;
+                        case 2:
+                            attackBuffed = true;
+                            break;
+                        default: //temporary
+                            combatInventory.allyHealth -= combatInventory.enemyAbil1Damage;
+                            break;
+                    }
+                }
                 Debug.Log("1st abil-charAttacked = "+charAttacked);
                 combatInventory.prob1 = 1;
                 combatInventory.prob2++;
@@ -59,6 +146,7 @@ public class EnemyCombat : MonoBehaviour
                             break;
                         case 3:
                             combatInventory.solStunned = true;
+                            combatInventory.allyHealth -= combatInventory.enemyAbil3Damage;
                             break;
                         case 1:
                             combatInventory.enemyShield = true;
@@ -73,11 +161,63 @@ public class EnemyCombat : MonoBehaviour
                 }
                 else if (charAttacked <= combatInventory.solHealth + combatInventory.astrumHealth && charAttacked > combatInventory.solHealth) //astrum attacked
                 {
-                    combatInventory.astrumHealth -= combatInventory.enemyAbil2Damage;
+                    switch (combatInventory.enemyAbil2Type)
+                    {
+                        case 4:
+                            if (attackBuffed)
+                            {
+                                combatInventory.astrumHealth -= combatInventory.enemyAbil2Damage * 2;
+                                attackBuffed = false;
+                            }
+                            else combatInventory.astrumHealth -= combatInventory.enemyAbil2Damage;
+                            break;
+                        case 0:
+                            combatInventory.enemyHealth += combatInventory.enemyAbil2Damage;
+                            break;
+                        case 3:
+                            combatInventory.astrumStunned = true;
+                            combatInventory.allyHealth -= combatInventory.enemyAbil3Damage;
+                            break;
+                        case 1:
+                            combatInventory.enemyShield = true;
+                            break;
+                        case 2:
+                            attackBuffed = true;
+                            break;
+                        default: //temporary
+                            combatInventory.astrumHealth -= combatInventory.enemyAbil2Damage;
+                            break;
+                    }
                 }
                 else //ally attacked
                 {
-                    combatInventory.allyHealth -= combatInventory.enemyAbil2Damage;
+                    switch (combatInventory.enemyAbil2Type)
+                    {
+                        case 4:
+                            if (attackBuffed)
+                            {
+                                combatInventory.allyHealth -= combatInventory.enemyAbil2Damage * 2;
+                                attackBuffed = false;
+                            }
+                            else combatInventory.allyHealth -= combatInventory.enemyAbil2Damage;
+                            break;
+                        case 0:
+                            combatInventory.enemyHealth += combatInventory.enemyAbil2Damage;
+                            break;
+                        case 3:
+                            combatInventory.allyStunned = true;
+                            combatInventory.allyHealth -= combatInventory.enemyAbil3Damage;
+                            break;
+                        case 1:
+                            combatInventory.enemyShield = true;
+                            break;
+                        case 2:
+                            attackBuffed = true;
+                            break;
+                        default: //temporary
+                            combatInventory.allyHealth -= combatInventory.enemyAbil2Damage;
+                            break;
+                    }
                 }
                 Debug.Log("2nd abil-charAttacked = "+charAttacked);
                 combatInventory.prob1++;
@@ -87,11 +227,98 @@ public class EnemyCombat : MonoBehaviour
             }
             else if (abilUsed <= (combatInventory.prob1 + combatInventory.prob2+combatInventory.prob3) && abilUsed > combatInventory.prob2)
             {
-                if (charAttacked <= combatInventory.solHealth) combatInventory.solHealth -= combatInventory.enemyAbil3Damage; //rn all abilities damage-add checks for abiltype later
-                else if (charAttacked <= combatInventory.solHealth + combatInventory.astrumHealth && charAttacked > combatInventory.solHealth) combatInventory.astrumHealth -= combatInventory.enemyAbil3Damage;
-                else combatInventory.allyHealth -= combatInventory.enemyAbil3Damage;
+                if (charAttacked <= combatInventory.solHealth)
+                {
+                    switch (combatInventory.enemyAbil3Type)
+                    {
+                        case 4:
+                            if (attackBuffed)
+                            {
+                                combatInventory.solHealth -= combatInventory.enemyAbil3Damage * 2;
+                                attackBuffed = false;
+                            }
+                            else combatInventory.solHealth -= combatInventory.enemyAbil3Damage;
+                            break;
+                        case 0:
+                            combatInventory.enemyHealth += combatInventory.enemyAbil3Damage;
+                            break;
+                        case 3:
+                            combatInventory.solStunned = true;
+                            combatInventory.allyHealth -= combatInventory.enemyAbil3Damage;
+                            break;
+                        case 1:
+                            combatInventory.enemyShield = true;
+                            break;
+                        case 2:
+                            attackBuffed = true;
+                            break;
+                        default: //temporary
+                            combatInventory.solHealth -= combatInventory.enemyAbil3Damage;
+                            break;
+                    }
+                }
+                else if (charAttacked <= combatInventory.solHealth + combatInventory.astrumHealth && charAttacked > combatInventory.solHealth)
+                {
+                    switch (combatInventory.enemyAbil3Type)
+                    {
+                        case 4:
+                            if (attackBuffed)
+                            {
+                                combatInventory.astrumHealth -= combatInventory.enemyAbil3Damage * 2;
+                                attackBuffed = false;
+                            }
+                            else combatInventory.astrumHealth -= combatInventory.enemyAbil3Damage;
+                            break;
+                        case 0:
+                            combatInventory.enemyHealth += combatInventory.enemyAbil3Damage;
+                            break;
+                        case 3:
+                            combatInventory.astrumStunned = true;
+                            combatInventory.allyHealth -= combatInventory.enemyAbil3Damage;
+                            break;
+                        case 1:
+                            combatInventory.enemyShield = true;
+                            break;
+                        case 2:
+                            attackBuffed = true;
+                            break;
+                        default: //temporary
+                            combatInventory.astrumHealth -= combatInventory.enemyAbil3Damage;
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (combatInventory.enemyAbil3Type)
+                    {
+                        case 4:
+                            if (attackBuffed)
+                            {
+                                combatInventory.allyHealth -= combatInventory.enemyAbil3Damage * 2;
+                                attackBuffed = false;
+                            }
+                            else combatInventory.allyHealth -= combatInventory.enemyAbil3Damage;
+                            break;
+                        case 0:
+                            combatInventory.enemyHealth += combatInventory.enemyAbil3Damage;
+                            break;
+                        case 3:
+                            combatInventory.allyStunned = true;
+                            combatInventory.allyHealth-=combatInventory.enemyAbil3Damage;
+                            break;
+                        case 1:
+                            combatInventory.enemyShield = true;
+                            break;
+                        case 2:
+                            attackBuffed = true;
+                            break;
+                        default: //temporary
+                            combatInventory.allyHealth -= combatInventory.enemyAbil3Damage;
+                            break;
+                    }
+                }
                 Debug.Log("3rd abil-charAttacked = " + charAttacked);
-                combatInventory.prob1++; ;
+                combatInventory.prob1++; 
                 combatInventory.prob2++;
                 combatInventory.prob3=1;
                 combatInventory.prob4++;
