@@ -26,12 +26,12 @@ public class EnemyCombat : MonoBehaviour
         if(!combatInventory.playerTurn)
         {
             int abilUsed = rnd.Next(1,combatInventory.prob1+ combatInventory.prob2+ combatInventory.prob3 + combatInventory.prob4+1); //+1 to include upper bound
-            int charAttacked = rnd.Next(1,combatInventory.solHealth+combatInventory.astrumHealth+combatInventory.allyHealth+1); //lower bound is 1 and not 0 to prevent player from being attacked when health is 0 (line 31)
+            int charAttacked = rnd.Next(1,30-(combatInventory.solHealth+combatInventory.astrumHealth+combatInventory.allyHealth)+1); //lower bound is 1 and not 0 to prevent player from being attacked when health is 0 (line 31)
             Debug.Log("charAttacked-"+charAttacked);
             //for lowest health gets highest chance-make all health 10-health to flip the #s
             if (abilUsed<=combatInventory.prob1) //first ability used
             {
-                if (charAttacked <= combatInventory.solHealth) //sol attacked with first abil
+                if (charAttacked <= 10-combatInventory.solHealth) //sol attacked with first abil
                 {
                     switch (combatInventory.enemyAbil1Type)
                     {
@@ -61,7 +61,7 @@ public class EnemyCombat : MonoBehaviour
                             break;
                     }
                 }
-                else if (charAttacked <= combatInventory.solHealth + combatInventory.astrumHealth && charAttacked > combatInventory.solHealth) //astrum attacked with first abil
+                else if (charAttacked <= 10-(combatInventory.solHealth + combatInventory.astrumHealth) && charAttacked > 10-combatInventory.solHealth) //astrum attacked with first abil
                 {
                     switch (combatInventory.enemyAbil1Type)
                     {
@@ -129,7 +129,7 @@ public class EnemyCombat : MonoBehaviour
             }
             else if(abilUsed<=(combatInventory.prob1+combatInventory.prob2)&&abilUsed>combatInventory.prob1) //2nd abil
             {
-                if (charAttacked <= combatInventory.solHealth) //sol attacked
+                if (charAttacked <= 10-combatInventory.solHealth) //sol attacked
                 {
                     switch (combatInventory.enemyAbil2Type)
                     {
@@ -159,7 +159,7 @@ public class EnemyCombat : MonoBehaviour
                             break;
                     }
                 }
-                else if (charAttacked <= combatInventory.solHealth + combatInventory.astrumHealth && charAttacked > combatInventory.solHealth) //astrum attacked
+                else if (charAttacked <= 20-(combatInventory.solHealth + combatInventory.astrumHealth) && charAttacked > 10-combatInventory.solHealth) //astrum attacked
                 {
                     switch (combatInventory.enemyAbil2Type)
                     {
@@ -227,7 +227,7 @@ public class EnemyCombat : MonoBehaviour
             }
             else if (abilUsed <= (combatInventory.prob1 + combatInventory.prob2+combatInventory.prob3) && abilUsed > combatInventory.prob2)
             {
-                if (charAttacked <= combatInventory.solHealth)
+                if (charAttacked <= 10-combatInventory.solHealth)
                 {
                     switch (combatInventory.enemyAbil3Type)
                     {
@@ -257,7 +257,7 @@ public class EnemyCombat : MonoBehaviour
                             break;
                     }
                 }
-                else if (charAttacked <= combatInventory.solHealth + combatInventory.astrumHealth && charAttacked > combatInventory.solHealth)
+                else if (charAttacked <= 20-(combatInventory.solHealth + combatInventory.astrumHealth) && charAttacked > 10-combatInventory.solHealth)
                 {
                     switch (combatInventory.enemyAbil3Type)
                     {
@@ -327,7 +327,7 @@ public class EnemyCombat : MonoBehaviour
             {
                 if (charAttacked <= combatInventory.solHealth)
                 {
-                    switch (combatInventory.enemyAbil4Type)
+                    switch (10-combatInventory.enemyAbil4Type)
                     {
                         case 4:
                             if (attackBuffed)
@@ -355,7 +355,7 @@ public class EnemyCombat : MonoBehaviour
                             break;
                     }
                 }
-                else if (charAttacked <= combatInventory.solHealth + combatInventory.astrumHealth && charAttacked > combatInventory.solHealth)
+                else if (charAttacked <= 20-(combatInventory.solHealth + combatInventory.astrumHealth) && charAttacked > 10-combatInventory.solHealth)
                 {
                     switch (combatInventory.enemyAbil4Type)
                     {
