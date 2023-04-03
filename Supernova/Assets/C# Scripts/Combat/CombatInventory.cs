@@ -32,11 +32,11 @@ public class CombatInventory : MonoBehaviour
     public int astrumAbil4dmg = 3;
 
     public String allyAbil1 = "Not Available";
-    public String allyAbil2 = "Not Avaiaible";
+    public String allyAbil2 = "Not Available";
     public String allyAbil3 = "Not Available";
     public String allyAbil4 = "Not Available";
 
-    public String item1 = "Not Available";
+    public String item1 = "Chips";
     public String item2 = "Not Available";
     public String item3 = "Not Available";
     public String item4 = "Not Available";
@@ -46,7 +46,7 @@ public class CombatInventory : MonoBehaviour
     public int enemyAbil1Damage = 4;
     public String enemyAbil2 = "Paralyze";
     public int enemyAbil2Type = 3; 
-    public int enemyAbil2Damage = 3;
+    public int enemyAbil2Damage = 3; //stuns damage, but less than attack
     public String enemyAbil3 = "Bravery";
     public int enemyAbil3Type = 2;
     public int enemyAbil3Damage = 5;

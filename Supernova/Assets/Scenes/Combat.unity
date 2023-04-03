@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 52084179}
   - component: {fileID: 52084177}
   - component: {fileID: 52084178}
-  - component: {fileID: 52084176}
+  - component: {fileID: 52084180}
   m_Layer: 0
   m_Name: Script Holder
   m_TagString: Untagged
@@ -142,64 +142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &52084176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52084175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd53641c9e7d9c9489d7aabddd8cc242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  solHealth: 10
-  astrumHealth: 10
-  allyHealth: 8
-  enemyHealth: 20
-  playerTurn: 0
-  rounds: 1
-  solAbil1: Slingshot
-  solAbil11dmg: 2
-  solAbil2: Not Availible
-  solAbil12dmg: 2
-  solAbil3: Not Available
-  solAbil13dmg: 2
-  solAbil4: Not Available
-  solAbil41dmg: 2
-  astrumAbil1: Radiation
-  astrumAbil1dmg: 2
-  astrumAbil2: Heaven's Blessing
-  astrumAbil2dmg: 2
-  astrumAbil3: Glory
-  astrumAbil3dmg: 3
-  astrumAbil4: Celestial Cartography
-  astrumAbil4dmg: 3
-  allyAbil1: Not Availible
-  allyAbil2: Not Availible
-  allyAbil3: Not Availible
-  allyAbil4: Not Availible
-  item1: Not Available
-  item2: Not Available
-  item3: Not Available
-  item4: Not Available
-  enemyAbil1: Venom
-  enemyAbil1Type: 4
-  enemyAbil1Damage: 2
-  enemyAbil2: Paralyze
-  enemyAbil12ype: 3
-  enemyAbil2Damage: 1
-  enemyAbil3: Bravery
-  enemyAbil3Type: 2
-  enemyAbil3Damage: 3
-  enemyAbil4: Exoskeleton
-  enemyAbil4Type: 1
-  enemyAbil4Damage: 2
-  prob1: 4
-  prob2: 3
-  prob3: 2
-  prob4: 1
 --- !u!114 &52084177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,15 +179,22 @@ MonoBehaviour:
   audioOption:
   - {fileID: 8300000, guid: 157e327ec836d4a4fa8190329b6e09de, type: 3}
   - {fileID: 8300000, guid: a1621980cb066a94bb966ddb33d263f2, type: 3}
+  - {fileID: 8300000, guid: a6636c7b7b3ad9041b0d4fa60ed04f6e, type: 3}
   Ability1: {fileID: 186660398}
   Ability2: {fileID: 1876335136}
   Ability3: {fileID: 2013196614}
   Ability4: {fileID: 1804971108}
+  solSelect: 0
+  astrumSelect: 0
+  allySelect: 0
   astrumHealth: {fileID: 183439792}
   solHealth: {fileID: 522266513}
   allyHealth: {fileID: 213821711}
   enemyHealth: {fileID: 1477523330}
   roundsDisplay: {fileID: 1766011011}
+  solBlock: 0
+  astrumBlock: 0
+  allyBlock: 0
 --- !u!114 &52084178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +225,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &52084180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52084175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53641c9e7d9c9489d7aabddd8cc242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solHealth: 10
+  astrumHealth: 10
+  allyHealth: 8
+  enemyHealth: 20
+  playerTurn: 1
+  rounds: 1
+  solAbil1: Slingshot
+  solAbil11dmg: 2
+  solAbil2: Not Available
+  solAbil12dmg: 2
+  solAbil3: Not Available
+  solAbil13dmg: 2
+  solAbil4: Not Available
+  solAbil41dmg: 2
+  astrumAbil1: Radiation
+  astrumAbil1dmg: 2
+  astrumAbil2: Heaven's Blessing
+  astrumAbil2dmg: 2
+  astrumAbil3: Glory
+  astrumAbil3dmg: 3
+  astrumAbil4: Celestial Cartography
+  astrumAbil4dmg: 3
+  allyAbil1: Not Available
+  allyAbil2: Not Available
+  allyAbil3: Not Available
+  allyAbil4: Not Available
+  item1: Chips
+  item2: Not Available
+  item3: Not Available
+  item4: Not Available
+  enemyAbil1: Venom
+  enemyAbil1Type: 4
+  enemyAbil1Damage: 4
+  enemyAbil2: Paralyze
+  enemyAbil2Type: 3
+  enemyAbil2Damage: 3
+  enemyAbil3: Bravery
+  enemyAbil3Type: 2
+  enemyAbil3Damage: 5
+  enemyAbil4: Exoskeleton
+  enemyAbil4Type: 1
+  enemyAbil4Damage: 2
+  prob1: 4
+  prob2: 3
+  prob3: 2
+  prob4: 1
+  solStunned: 0
+  astrumStunned: 0
+  allyStunned: 0
+  enemyShield: 0
 --- !u!1 &83079540
 GameObject:
   m_ObjectHideFlags: 0

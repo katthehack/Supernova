@@ -27,15 +27,15 @@ public class EnemyCombat : MonoBehaviour
         {
             int abilUsed = rnd.Next(1,combatInventory.prob1+ combatInventory.prob2+ combatInventory.prob3 + combatInventory.prob4+1); //+1 to include upper bound
             int charAttacked = rnd.Next(1,combatInventory.solHealth+combatInventory.astrumHealth+combatInventory.allyHealth+1); //lower bound is 1 and not 0 to prevent player from being attacked when health is 0 (line 31)
-            Debug.Log("abil used-" + abilUsed + " charAttacked-"+charAttacked);
+            Debug.Log("charAttacked-"+charAttacked);
             //for lowest health gets highest chance-make all health 10-health to flip the #s
-            if (abilUsed<=combatInventory.prob1)
+            if (abilUsed<=combatInventory.prob1) //first ability used
             {
-                if (charAttacked <= combatInventory.solHealth)
+                if (charAttacked <= combatInventory.solHealth) //sol attacked with first abil
                 {
                     switch (combatInventory.enemyAbil1Type)
                     {
-                        case 4:
+                        case 4: //attack
                             if (attackBuffed)
                             {
                                 combatInventory.solHealth -= combatInventory.enemyAbil1Damage * 2;
@@ -43,25 +43,25 @@ public class EnemyCombat : MonoBehaviour
                             }
                             else combatInventory.solHealth -= combatInventory.enemyAbil1Damage;
                             break;
-                        case 0:
+                        case 0: //heal
                             combatInventory.enemyHealth += combatInventory.enemyAbil1Damage;
                             break;
-                        case 3:
+                        case 3: //stun
                             combatInventory.solStunned = true;
                             combatInventory.allyHealth -= combatInventory.enemyAbil3Damage;
                             break;
-                        case 1:
+                        case 1: //shield
                             combatInventory.enemyShield = true;
                             break;
-                        case 2:
+                        case 2: //attack buff
                             attackBuffed = true;
                             break;
-                        default: //temporary
+                        default: //temporary-making sure no glitches or wasted enemy turns
                             combatInventory.solHealth -= combatInventory.enemyAbil1Damage;
                             break;
                     }
                 }
-                else if (charAttacked <= combatInventory.solHealth + combatInventory.astrumHealth && charAttacked > combatInventory.solHealth)
+                else if (charAttacked <= combatInventory.solHealth + combatInventory.astrumHealth && charAttacked > combatInventory.solHealth) //astrum attacked with first abil
                 {
                     switch (combatInventory.enemyAbil1Type)
                     {
@@ -91,7 +91,7 @@ public class EnemyCombat : MonoBehaviour
                             break;
                     }
                 }
-                else
+                else //ally attacked with first abil
                 {
                     switch (combatInventory.enemyAbil1Type)
                     {
@@ -121,7 +121,7 @@ public class EnemyCombat : MonoBehaviour
                             break;
                     }
                 }
-                Debug.Log("1st abil-charAttacked = "+charAttacked);
+                Debug.Log("1st abil");
                 combatInventory.prob1 = 1;
                 combatInventory.prob2++;
                 combatInventory.prob3++;
@@ -219,7 +219,7 @@ public class EnemyCombat : MonoBehaviour
                             break;
                     }
                 }
-                Debug.Log("2nd abil-charAttacked = "+charAttacked);
+                Debug.Log("2nd abil");
                 combatInventory.prob1++;
                 combatInventory.prob2=1;
                 combatInventory.prob3++;
@@ -317,7 +317,7 @@ public class EnemyCombat : MonoBehaviour
                             break;
                     }
                 }
-                Debug.Log("3rd abil-charAttacked = " + charAttacked);
+                Debug.Log("3rd abil");
                 combatInventory.prob1++; 
                 combatInventory.prob2++;
                 combatInventory.prob3=1;
@@ -325,15 +325,112 @@ public class EnemyCombat : MonoBehaviour
             }
             else 
             {
+                if (charAttacked <= combatInventory.solHealth)
+                {
+                    switch (combatInventory.enemyAbil4Type)
+                    {
+                        case 4:
+                            if (attackBuffed)
+                            {
+                                combatInventory.solHealth -= combatInventory.enemyAbil4Damage * 2;
+                                attackBuffed = false;
+                            }
+                            else combatInventory.solHealth -= combatInventory.enemyAbil4Damage;
+                            break;
+                        case 0:
+                            combatInventory.enemyHealth += combatInventory.enemyAbil4Damage;
+                            break;
+                        case 3:
+                            combatInventory.solStunned = true;
+                            combatInventory.allyHealth -= combatInventory.enemyAbil4Damage;
+                            break;
+                        case 1:
+                            combatInventory.enemyShield = true;
+                            break;
+                        case 2:
+                            attackBuffed = true;
+                            break;
+                        default: //temporary
+                            combatInventory.solHealth -= combatInventory.enemyAbil4Damage;
+                            break;
+                    }
+                }
+                else if (charAttacked <= combatInventory.solHealth + combatInventory.astrumHealth && charAttacked > combatInventory.solHealth)
+                {
+                    switch (combatInventory.enemyAbil4Type)
+                    {
+                        case 4:
+                            if (attackBuffed)
+                            {
+                                combatInventory.astrumHealth -= combatInventory.enemyAbil4Damage * 2;
+                                attackBuffed = false;
+                            }
+                            else combatInventory.astrumHealth -= combatInventory.enemyAbil4Damage;
+                            break;
+                        case 0:
+                            combatInventory.enemyHealth += combatInventory.enemyAbil4Damage;
+                            break;
+                        case 3:
+                            combatInventory.astrumStunned = true;
+                            combatInventory.allyHealth -= combatInventory.enemyAbil4Damage;
+                            break;
+                        case 1:
+                            combatInventory.enemyShield = true;
+                            break;
+                        case 2:
+                            attackBuffed = true;
+                            break;
+                        default: //temporary
+                            combatInventory.astrumHealth -= combatInventory.enemyAbil4Damage;
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (combatInventory.enemyAbil4Type)
+                    {
+                        case 4:
+                            if (attackBuffed)
+                            {
+                                combatInventory.allyHealth -= combatInventory.enemyAbil4Damage * 2;
+                                attackBuffed = false;
+                            }
+                            else combatInventory.allyHealth -= combatInventory.enemyAbil4Damage;
+                            break;
+                        case 0:
+                            combatInventory.enemyHealth += combatInventory.enemyAbil4Damage;
+                            break;
+                        case 3:
+                            combatInventory.allyStunned = true;
+                            combatInventory.allyHealth -= combatInventory.enemyAbil4Damage;
+                            break;
+                        case 1:
+                            combatInventory.enemyShield = true;
+                            break;
+                        case 2:
+                            attackBuffed = true;
+                            break;
+                        default: //temporary
+                            combatInventory.allyHealth -= combatInventory.enemyAbil4Damage;
+                            break;
+                    }
+                }
                 Debug.Log("4th abil");
                 combatInventory.prob1++;
                 combatInventory.prob2++;
                 combatInventory.prob3++;
                 combatInventory.prob4 = 1;
             }
+            if (combatInventory.enemyAbil1Type == 4) combatInventory.enemyAbil1Type++; //gives attack more probability to come up relative to other abilities
+            if (combatInventory.enemyAbil2Type == 4) combatInventory.enemyAbil2Type++;
+            if (combatInventory.enemyAbil3Type == 4) combatInventory.enemyAbil3Type++;
+            if (combatInventory.enemyAbil4Type == 4) combatInventory.enemyAbil4Type++;
+            if(combatInventory.solHealth<0) combatInventory.solHealth = 0; //putting this here to save space in update function
+            if (combatInventory.astrumHealth < 0) combatInventory.astrumHealth = 0;
+            if (combatInventory.allyHealth < 0) combatInventory.allyHealth = 0;
             combatInventory.playerTurn = true;
             combatInventory.rounds++;
-        }
+        }//end enemy turn
 
     }
 

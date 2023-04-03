@@ -25,10 +25,11 @@ public class PlayerCombat : MonoBehaviour
     Boolean sol, astrum, ally, powers,action,item;
     public TMP_Text Ability1, Ability2, Ability3, Ability4; //displays abilities text
     public Boolean solSelect, astrumSelect, allySelect; //has player selected an attack for them yet
-    int solSelectAbil, astrumSelectAbil, allySelectAbil; //which abil 1-4 is activated
+    int solSelectAbil, astrumSelectAbil, allySelectAbil; //which abil 1-4 is activated-used to determine which attack is used against enemy
     public TMP_Text astrumHealth, solHealth, allyHealth, enemyHealth, roundsDisplay; //displays health
     String[] characterOrderDisplay;
     int characterOrderDisplayNum;
+    public Boolean solBlock, astrumBlock, allyBlock;
 
     private void Start()
     {
@@ -58,6 +59,7 @@ public class PlayerCombat : MonoBehaviour
         characterOrderDisplay = new String[3];
         characterOrderDisplayNum = 0;
         combatInventory.playerTurn = true;
+        solBlock = astrumBlock = allyBlock = false;
 
     }
     // Update is called once per frame
@@ -72,18 +74,18 @@ public class PlayerCombat : MonoBehaviour
         {
             case "Sol":
                 icon1.sprite = characterEmotions[3];
-                Debug.Log("Sol 1");
+              //  Debug.Log("Sol 1");
                 break;
             case "Astrum":
                 icon1.sprite = characterEmotions[4];
-                Debug.Log("Astrum 1");
+              //  Debug.Log("Astrum 1");
                 break;
             case "Ally":
                 icon1.sprite = characterEmotions[5];
-                Debug.Log("Ally 1");
+              //  Debug.Log("Ally 1");
                 break;
             default:
-                Debug.Log("default");
+              //  Debug.Log("default");
                 icon1.sprite = characterEmotions[9];
                 break;
         }
@@ -99,7 +101,7 @@ public class PlayerCombat : MonoBehaviour
                 icon2.sprite = characterEmotions[5];
                 break;
             default:
-                Debug.Log("default");
+             //   Debug.Log("default");
                 icon2.sprite = characterEmotions[9];
                 break;
         }
@@ -107,18 +109,18 @@ public class PlayerCombat : MonoBehaviour
         {
             case "Sol":
                 icon3.sprite = characterEmotions[3];
-                Debug.Log("Sol 3");
+            //    Debug.Log("Sol 3");
                 break;
             case "Astrum":
                 icon3.sprite = characterEmotions[4];
-                Debug.Log("Astrum 3");
+            //    Debug.Log("Astrum 3");
                 break;
             case "Ally":
                 icon3.sprite = characterEmotions[5];
-                Debug.Log("Ally 3");
+           //     Debug.Log("Ally 3");
                 break;
             default:
-                Debug.Log("default 3");
+            //    Debug.Log("default 3");
                 icon3.sprite = characterEmotions[9];
                 break;
         }
@@ -260,6 +262,7 @@ public class PlayerCombat : MonoBehaviour
                         solSelect = true;
                         sol = astrum = ally = powers = false;
                         audioSource.PlayOneShot(audioOption[1]);
+                        solBlock = true;
                     }
                     else if (astrum)
                     {
@@ -267,6 +270,7 @@ public class PlayerCombat : MonoBehaviour
                         astrumSelect = true;
                         sol = astrum = ally = powers = false;
                         audioSource.PlayOneShot(audioOption[1]);
+                        astrumBlock = true;
                     }
                     else if (ally)
                     {
@@ -274,6 +278,7 @@ public class PlayerCombat : MonoBehaviour
                         allySelect = true;
                         sol = astrum = ally = powers = false;
                         audioSource.PlayOneShot(audioOption[1]);
+                        allyBlock = true;
                     }
 
                 }
@@ -283,7 +288,7 @@ public class PlayerCombat : MonoBehaviour
                     audioSource.PlayOneShot(audioOption[1]);
                 }
             }
-            if(Input.GetKeyDown(KeyCode.D)) 
+            if(Input.GetKeyDown(KeyCode.D)) //move left or right
             {
                 if (typeSelect < 3) typeSelect++;
                 audioSource.PlayOneShot(audioOption[0]);
@@ -293,7 +298,7 @@ public class PlayerCombat : MonoBehaviour
                 if (typeSelect > 0) typeSelect--;
                 audioSource.PlayOneShot(audioOption[0]);
             }
-            if(typeSelect==0)
+            if(typeSelect==0) //change display text size
             {
                 Ability1.fontSize = fontHoverSize;
                 Ability2.fontSize = fontSize;
@@ -325,37 +330,72 @@ public class PlayerCombat : MonoBehaviour
         }
         else if(powers)//attacking window
         {
-            
-            if(sol && Input.GetKeyDown(input)) //ability selected
+            if (sol && Input.GetKeyDown(input)) //ability selected
             {
-                solSelectAbil = abilitySelect;
-                solSelect = true;
-                sol=astrum=ally=powers = false;
-                audioSource.PlayOneShot(audioOption[1]);
-                characterOrderDisplay[characterOrderDisplayNum] = "Sol";
-                characterOrderDisplayNum++;
+                //2 things determine what ability is used-the position when selecting action(fight, item, etc.) and position when selecting power (0,1,2,or 3) for each character
+
+                if (typeSelect == 0 && abilitySelect == 0 && combatInventory.solAbil1.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 0 && abilitySelect == 1 && combatInventory.solAbil2.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 0 && abilitySelect == 2 && combatInventory.solAbil3.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 0 && abilitySelect == 3 && combatInventory.solAbil4.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 1 && abilitySelect == 0 && combatInventory.item1.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]); 
+                else if (typeSelect == 1 && abilitySelect == 1 && combatInventory.item2.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 1 && abilitySelect == 2 && combatInventory.item3.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 1 && abilitySelect == 3 && combatInventory.item4.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else
+                { //if, after checking all of Sol's possible selections and making sure that the one selected is available...
+                    //also, no need to check typeSelect 2 and 3 because those are block and run and will never lead to the power window
+                    solSelectAbil = abilitySelect;
+                    solSelect = true;
+                    sol = astrum = ally = powers = false;
+                    audioSource.PlayOneShot(audioOption[1]);
+                    characterOrderDisplay[characterOrderDisplayNum] = "Sol";
+                    characterOrderDisplayNum++;
+                }
             }
             else if (astrum && Input.GetKeyDown(input))
             {
-                astrumSelectAbil = abilitySelect;
-                astrumSelect = true;
-                sol = astrum = ally = powers = false;
-                audioSource.PlayOneShot(audioOption[1]);
-                characterOrderDisplay[characterOrderDisplayNum] = "Astrum";
-                characterOrderDisplayNum++;
+                if (typeSelect == 0 && abilitySelect == 0 && combatInventory.astrumAbil1.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]); 
+                else if (typeSelect == 0 && abilitySelect == 1 && combatInventory.astrumAbil2.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 0 && abilitySelect == 2 && combatInventory.astrumAbil3.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 0 && abilitySelect == 3 && combatInventory.astrumAbil4.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 1 && abilitySelect == 0 && combatInventory.item1.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 1 && abilitySelect == 1 && combatInventory.item2.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 1 && abilitySelect == 2 && combatInventory.item3.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 1 && abilitySelect == 3 && combatInventory.item4.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else
+                {
+                    astrumSelectAbil = abilitySelect;
+                    astrumSelect = true;
+                    sol = astrum = ally = powers = false;
+                    audioSource.PlayOneShot(audioOption[1]);
+                    characterOrderDisplay[characterOrderDisplayNum] = "Astrum";
+                    characterOrderDisplayNum++;
+                }
             }
             else if (ally && Input.GetKeyDown(input))
             {
-                allySelectAbil = abilitySelect;
-                allySelect = true;
-                sol = astrum = ally = powers = false;
-                audioSource.PlayOneShot(audioOption[1]);
-                characterOrderDisplay[characterOrderDisplayNum] = "Ally";
-                characterOrderDisplayNum++;
+                if (typeSelect == 0 && abilitySelect == 0 && combatInventory.allyAbil1.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 0 && abilitySelect == 1 && combatInventory.allyAbil2.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 0 && abilitySelect == 2 && combatInventory.allyAbil3.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 0 && abilitySelect == 3 && combatInventory.allyAbil4.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 1 && abilitySelect == 0 && combatInventory.item1.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]); 
+                else if (typeSelect == 1 && abilitySelect == 1 && combatInventory.item2.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 1 && abilitySelect == 2 && combatInventory.item3.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else if (typeSelect == 1 && abilitySelect == 3 && combatInventory.item4.Equals("Not Available")) audioSource.PlayOneShot(audioOption[2]);
+                else {
+                    allySelectAbil = abilitySelect;
+                    allySelect = true;
+                    sol = astrum = ally = powers = false;
+                    audioSource.PlayOneShot(audioOption[1]);
+                    characterOrderDisplay[characterOrderDisplayNum] = "Ally";
+                    characterOrderDisplayNum++;
+                 }
             }
             else if (Input.GetKeyDown(back)) 
             {
                 action = true;
+                abilitySelect = 0;
                 audioSource.PlayOneShot(audioOption[1]);
 
             }
@@ -405,7 +445,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 characterOrderDisplay[i] = "";
             }
-            
+            characterSelect = 0;
         }
 
         if (combatInventory.solHealth == 0 && combatInventory.astrumHealth == 0 && combatInventory.allyHealth == 0) //end game
