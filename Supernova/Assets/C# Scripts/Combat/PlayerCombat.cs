@@ -47,7 +47,7 @@ public class PlayerCombat : MonoBehaviour
         icon2 = GameObject.Find("Icon 2").GetComponent<SpriteRenderer>();
         icon3 = GameObject.Find("Icon 3").GetComponent<SpriteRenderer>();
         sol = astrum = ally = powers = false; //where user is hovering in powers
-        fontSize = 25;
+        fontSize = 27;
         fontHoverSize = 30;
         solSelect=astrumSelect= allySelect =action = item=false; //have you selected an ability for them yet
         solSelectAbil = astrumSelectAbil = allySelectAbil = 0; //determines which attack is used
@@ -70,7 +70,7 @@ public class PlayerCombat : MonoBehaviour
         allyHealth.text = combatInventory.allyHealth.ToString();
         enemyHealth.text = combatInventory.enemyHealth.ToString();
         roundsDisplay.text = "Round "+combatInventory.rounds.ToString();
-        switch (characterOrderDisplay[0])
+        switch (characterOrderDisplay[0]) //shows order selected in top right
         {
             case "Sol":
                 icon1.sprite = characterEmotions[3];
@@ -134,7 +134,7 @@ public class PlayerCombat : MonoBehaviour
             Ability2.text = "Item";
             Ability3.text = "Block";
             Ability4.text = "Run";
-            if (combatInventory.solHealth <= 5) solExpression.sprite = characterEmotions[6];
+            if (combatInventory.solHealth <= 5) solExpression.sprite = characterEmotions[6]; //low health emote
             if (combatInventory.astrumHealth <= 5) astrumExpression.sprite = characterEmotions[7];
             if (combatInventory.allyHealth <= 5) allyExpression.sprite = characterEmotions[8];
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))

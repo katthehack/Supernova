@@ -167,13 +167,13 @@ MonoBehaviour:
   characterEmotions:
   - {fileID: 21300000, guid: dd659d88a0fc3284da95602606864010, type: 3}
   - {fileID: -58531873, guid: 2a271ee60cd76e94bbb781564eb359ed, type: 3}
+  - {fileID: 231461532, guid: d164648634d198f4a8c11a27f3b3a663, type: 3}
+  - {fileID: -1704496891, guid: a19a1b870d0160640a94a8d8ec8dc612, type: 3}
   - {fileID: -116952628, guid: 634910fb618a5b446a7959de32844926, type: 3}
-  - {fileID: -1704496891, guid: a19a1b870d0160640a94a8d8ec8dc612, type: 3}
-  - {fileID: -1704496891, guid: a19a1b870d0160640a94a8d8ec8dc612, type: 3}
-  - {fileID: -1704496891, guid: a19a1b870d0160640a94a8d8ec8dc612, type: 3}
+  - {fileID: -116952628, guid: 634910fb618a5b446a7959de32844926, type: 3}
   - {fileID: -951687316, guid: 6e0e68776580fb544a86709175b71094, type: 3}
-  - {fileID: -951687316, guid: 6e0e68776580fb544a86709175b71094, type: 3}
-  - {fileID: -951687316, guid: 6e0e68776580fb544a86709175b71094, type: 3}
+  - {fileID: 867337505, guid: d29b5f605ece64644a0af4d9d47f3c12, type: 3}
+  - {fileID: 867337505, guid: d29b5f605ece64644a0af4d9d47f3c12, type: 3}
   - {fileID: -1750008742, guid: 80b075d5aca96134981ee2cdaccf338b, type: 3}
   audioSource: {fileID: 1943076753}
   audioOption:
